@@ -1,0 +1,47 @@
+.app__create {
+  background-color: #2d2d2d;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+}
+.app__create__wrap{
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+}
+.app_name {
+  color: white;
+  font-size: 26px;
+}
+
+.app__add__btn {
+  background-color: #626262;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  transition: all 0.3s ease 0s;
+
+  &:before {
+    content: '+';
+    color: white;
+    font-size: 30px;
+    position: relative;
+    top: -9px;
+    left: 0;
+    transition: all 0.3s ease 0s;
+
+  }
+
+  &:hover {
+    background-color: #2d2d2d;
+    border: 1px solid white;
+
+    &:before {
+      color: orange;
+    }
+  }
+}

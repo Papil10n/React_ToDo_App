@@ -1,0 +1,15 @@
+.app__head {
+  border: 1px solid black;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  min-height: 60px;
+  background-color: #2d2d2d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: white;
+  font-size: 28px;
+}

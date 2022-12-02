@@ -1,0 +1,35 @@
+.app__nav {
+  background-color: white;
+  padding-block: 10px;
+  font-size: 20px;
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+
+    li {
+      transition: all 0.2s ease 0s;
+
+      &:hover {
+        cursor: pointer;
+        color: orange;
+        transform: scale(1.04);
+      }
+
+      &:before {
+        content: '·';
+        position: relative;
+        top: 12px;
+        left: 50%;
+      }
+    }
+
+  }
+}
+
+.outline {
+  width: 90%;
+  margin: 0 auto;
+  height: 1px;
+  background-color: gray;
+}
