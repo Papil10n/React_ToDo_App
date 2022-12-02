@@ -1,30 +1,23 @@
 import "./Today.scss";
+import {connect} from "react-redux";
+import Task from "./Task/Task";
+import {setTaskMode} from "../../redux/today-reducer";
 
 const Today = (props) => {
-
-    return (<>
+    let taskItems = props.tasks.map(task => <Task key={task.id} setTaskMode={props.setTaskMode} task={task}></Task>);
+    return (
             <div className="app__content">
-
-                {/*  tasks  */}
-                <article className="app_task">
-                    <div className="app__mode">
-                        <button disabled={false} className="checkbox"/>
-                    </div>
-                    <div className="app__task__content">
-                        <p className="app__task__content__task">Walk the dog</p>
-                        <p className="app__task__content__time">10:00 am</p>
-                    </div>
-                </article>
-                {/*  tasks  */}
-
+                {taskItems}
             </div>
-
-    </>
-
-
-
-
     )
 }
 
-export default Today;
+const mapStateToProps = (state) => {
+    return {
+        tasks: state.today.tasks,
+    }
+}
+
+const TodayContainer = connect(mapStateToProps, {setTaskMode})(Today);
+
+export default TodayContainer;

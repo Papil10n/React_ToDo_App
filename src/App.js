@@ -4,9 +4,9 @@ import Today from "./component/Today/Today";
 import Header from "./component/Header/Header";
 import Navigate from "./component/Navigate/Navigate";
 import Footer from "./component/Footer/Footer";
+import TodayContainer from "./component/Today/Today";
 
 function App() {
-
 
     return (
         <div className="app">
@@ -16,7 +16,7 @@ function App() {
                     <Navigate/>
                     <div className="app__main">
                         <Routes>
-                            <Route path='/today' element={<Today/>}/>
+                            <Route path='/today' element={<TodayContainer/>}/>
                             {/*<Route path='/tomorrow' element={<Tomorrow />} />*/}
                             {/*<Route path='/week' element={<Week />} />*/}
                         </Routes>
