@@ -1,0 +1,109 @@
+.home {
+  width: 100%;
+  height: 600px;
+  background-color: #182141;
+  border-radius: 30px;
+  color: white;
+}
+.home__container {
+  max-width: 85%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.home__top__content {
+  flex: 1 1 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.home__burger {
+  & button {
+    font-size: 25px;
+    background: none;
+    color: white;
+    transform: rotate(90deg);
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: all 0.2s ease 0s;
+    &:before {
+      content: 'llι';
+    }
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.14);
+    }
+    &:active {
+      background-color: rgba(255, 255, 255, 0.26);
+    }
+  }
+}
+.home__text {
+
+}
+.home__top__hello {
+  font-size: 28px;
+}
+.home__top__nick {
+  font-size: 34px;
+  font-weight: bold;
+}
+.home__section__container {
+  max-height: 290px;
+  overflow-y: auto;
+}
+.home__section {
+  background-color: #6d6fff;
+  border-radius: 10px;
+  margin-block: 5px;
+  color: white;
+  opacity: 0.9;
+  transition: all 0.3s ease 0s;
+  &:hover {
+    opacity: 1;
+  }
+  &:active {
+    scale: 1.03;
+  }
+}
+.home__section__content {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  min-height: 55px;
+}
+.section__title {
+  font-size: 24px;
+  padding-right: 20px;
+}
+.section__task__counter {
+  font-size: 22px;
+  padding-right: 10px;
+}
+.home__add__task__wrap {
+  margin-top: 15px;
+  display: flex;
+  justify-content: right;
+}
+.home__add__task {
+  font-size: 40px;
+  width: 50px;
+  border-radius: 50%;
+  height: 50px;
+  transition: all 0.3s ease 0s;
+  &:before {
+    content: '+';
+    color: white;
+    position: relative;
+    top: 0px; left: 11px;
+  }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+  }
+  &:active {
+    background-color: rgba(255, 255, 255, 0.26);
+  }
+}
+.two {background-color: #4c4dff !important;}
+.three {background-color: #3c3dff !important;}
+.four {background-color: #003dff}
+.five {background-color: #18317c}

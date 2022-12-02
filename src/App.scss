@@ -3,18 +3,21 @@
 }
 
 .app__container {
-  max-width: 370px;
+  max-width: 340px;
   margin: 0 auto;
 }
 
 .app__wrap {
   background-color: white;
-  border-radius: 30px;
+  border-radius: 32px;
+  min-height: 600px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
 }
 
 .app__main {
   background-color: white;
-  min-height: 500px;
+  height: 440px;
+  overflow-y: auto;
 }
 
 

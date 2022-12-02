@@ -1,15 +1,14 @@
 // imports
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
-import todayReducer from "./today-reducer";
-import thunkMiddleware from "redux-thunk";
+import thunk from 'redux-thunk';
+import tasksReducer from "./task-reducer";
 
 const reducers = combineReducers({
-    today: todayReducer,
-
+    tasksReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
+const store = createStore(reducers, applyMiddleware(thunk));
 
 window.__store__ = store;
 

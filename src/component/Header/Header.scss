@@ -1,14 +1,29 @@
 .app__head {
+  position: relative;
   border: 1px solid black;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
   min-height: 60px;
-  background-color: #2d2d2d;
+  background-color: #182141;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.app__backBtn {
+  position: absolute;
+  top: 16%; left: 5%;
+  background: none;
+  transition: all 0.3s ease 0s;
+  &:before {
+    content: '←';
+    font-size: 30px;
+    color: white;
+  }
+  &:hover {
+    transform: rotate(-5deg);
+  }
 
+}
 .title {
   color: white;
   font-size: 28px;

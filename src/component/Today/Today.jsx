@@ -1,10 +1,10 @@
 import "./Today.scss";
 import {connect} from "react-redux";
-import Task from "./Task/Task";
-import {setTaskMode} from "../../redux/today-reducer";
+import Task from "../Task/Task";
 
 const Today = (props) => {
-    let taskItems = props.tasks.map(task => <Task key={task.id} setTaskMode={props.setTaskMode} task={task}></Task>);
+    let tasks = [...props.sections[props.currentTodos].tasks.today];
+    let taskItems = tasks.map(task => <Task key={task.id} task={task}></Task>);
     return (
             <div className="app__content">
                 {taskItems}
@@ -14,10 +14,10 @@ const Today = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        tasks: state.today.tasks,
+        sections: state.tasksReducer.sections
     }
 }
 
-const TodayContainer = connect(mapStateToProps, {setTaskMode})(Today);
+const TodayContainer = connect(mapStateToProps, {})(Today);
 
 export default TodayContainer;
