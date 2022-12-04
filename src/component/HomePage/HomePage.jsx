@@ -2,17 +2,21 @@ import {NavLink} from "react-router-dom";
 import "./HomePage.scss";
 import {connect} from "react-redux";
 import Section from "./Section/Section";
-import tasksReducer, {setCurrentTodos} from "../../redux/task-reducer";
+import  {setCurrentDateWatching, setCurrentTodos} from "../../redux/task-reducer";
 
 const HomePage = (props) => {
-    const sections = props.sections.map((s, i) => <Section key={s.id} number={i} setCurrentTodos={props.setCurrentTodos}
-                                                                          name={s.name}  tasks={s.tasks}/>)
+    const sections = props.sections.map((s, i) => <Section key={s.id} number={i}
+                                                           setCurrentDateWatching={props.setCurrentDateWatching}
+                                                           setCurrentTodos={props.setCurrentTodos}
+                                                           name={s.name} tasks={s.tasks}/>)
     return (
         <div className='home'>
             <div className='home__container'>
                 <div className='home__top__content'>
                     <div className='home__burger'>
-                        <button onClick={()=>{console.log('***')}}/>
+                        <button onClick={() => {
+                            console.log('***')
+                        }}/>
                     </div>
                     <div className='home__text'>
                         <p className='home__top__hello'>Hello</p>
@@ -21,7 +25,7 @@ const HomePage = (props) => {
                 </div>
                 {sections}
                 <div className='home__add__task__wrap'>
-                    <NavLink to='/new_todo' className='home__add__task'/>
+                    {sections.length <= 4 ? <NavLink to='/new_todo' className='home__add__task'/> : null}
                 </div>
             </div>
         </div>
@@ -34,6 +38,6 @@ const mstp = (state) => {
     }
 }
 
-const HomePageContainer = connect(mstp, {setCurrentTodos})(HomePage);
+const HomePageContainer = connect(mstp, {setCurrentTodos, setCurrentDateWatching})(HomePage);
 
 export default HomePageContainer;

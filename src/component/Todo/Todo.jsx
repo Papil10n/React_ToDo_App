@@ -1,23 +1,17 @@
 import HeaderContainer from "../Header/Header";
-import Navigates from "../Navigates/Navigate";
-import {Route, Routes} from "react-router-dom";
-import TodayContainer from "../Today/Today";
-import TomorrowContainer from "../Tomorrow/Tomorrow";
 import Footer from "../Footer/Footer";
 import {connect} from "react-redux";
+import NavigatesContainer from "../Navigates/Navigate";
+import TasksContainer from "../TasksContainer/TasksContainer";
+
 
 const Todo = (props) => {
     return (
         <div>
             <HeaderContainer/>
-            <Navigates currentTodos={props.currentTodos}/>
+            <NavigatesContainer currentTodos={props.currentTodos}/>
             <div className="app__main">
-                <Routes>
-                    <Route path={`${props.currentTodos}/today`}
-                           element={<TodayContainer currentTodosNum={props.currentTodosNum}/>}/>
-                    <Route path={`${props.currentTodos}/tomorrow`}
-                           element={<TomorrowContainer currentTodosNum={props.currentTodosNum}/>}/>
-                </Routes>
+                <TasksContainer date={props.currentDateWatching} currentTodosNum={props.currentTodosNum}/>
             </div>
             <Footer/>
         </div>
@@ -28,6 +22,7 @@ const mstp = (state) => {
     return {
         currentTodos: state.tasksReducer.currentTodos,
         currentTodosNum: state.tasksReducer.currentTodosNum,
+        currentDateWatching: state.tasksReducer.currentDateWatching,
     }
 }
 

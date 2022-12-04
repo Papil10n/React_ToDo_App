@@ -4,11 +4,8 @@ import HomePageContainer from "./component/HomePage/HomePage";
 import TodoContainer from "./component/Todo/Todo";
 import NewTodos from "./component/NewTodos/NewTodos";
 import NewTodosContainer from "./component/NewTodos/NewTodos";
+import NewTask from "./component/NewTask/NewTask";
 
-
-const NewTask = (props) => {
-    return (<div>new task</div>)
-}
 
 function App() {
     return (
@@ -20,6 +17,7 @@ function App() {
                         <Route path='/todo' element={<HomePageContainer/>}/>
                         <Route path='/todo/*' element={<TodoContainer />}/>
                         <Route path='/new_todo' element={<NewTodosContainer/>}/>
+                        <Route path='/new_task' element={<NewTask/>}/>
                     </Routes>
                 </div>
             </div>
