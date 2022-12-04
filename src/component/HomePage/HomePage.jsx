@@ -5,27 +5,23 @@ import Section from "./Section/Section";
 import tasksReducer, {setCurrentTodos} from "../../redux/task-reducer";
 
 const HomePage = (props) => {
-    const sections = Object.entries(props.sections).map(section => <Section setCurrentTodos={props.setCurrentTodos}
-                                                                            data={section}/>)
-
+    const sections = props.sections.map((s, i) => <Section key={s.id} number={i} setCurrentTodos={props.setCurrentTodos}
+                                                                          name={s.name}  tasks={s.tasks}/>)
     return (
         <div className='home'>
             <div className='home__container'>
                 <div className='home__top__content'>
                     <div className='home__burger'>
-                        <button/>
+                        <button onClick={()=>{console.log('***')}}/>
                     </div>
                     <div className='home__text'>
                         <p className='home__top__hello'>Hello</p>
-                        <p className='home__top__nick'>Daniel</p>
+                        <p className='home__top__nick'>Guest</p>
                     </div>
                 </div>
-                {/* sections */}
                 {sections}
-
                 <div className='home__add__task__wrap'>
-                    <NavLink to='/new_task' className='home__add__task'/>
-
+                    <NavLink to='/new_todo' className='home__add__task'/>
                 </div>
             </div>
         </div>

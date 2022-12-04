@@ -14,9 +14,9 @@ const Todo = (props) => {
             <div className="app__main">
                 <Routes>
                     <Route path={`${props.currentTodos}/today`}
-                           element={<TodayContainer currentTodos={props.currentTodos}/>}/>
+                           element={<TodayContainer currentTodosNum={props.currentTodosNum}/>}/>
                     <Route path={`${props.currentTodos}/tomorrow`}
-                           element={<TomorrowContainer currentTodos={props.currentTodos}/>}/>
+                           element={<TomorrowContainer currentTodosNum={props.currentTodosNum}/>}/>
                 </Routes>
             </div>
             <Footer/>
@@ -26,7 +26,8 @@ const Todo = (props) => {
 
 const mstp = (state) => {
     return {
-        currentTodos: state.tasksReducer.currentTodos
+        currentTodos: state.tasksReducer.currentTodos,
+        currentTodosNum: state.tasksReducer.currentTodosNum,
     }
 }
 

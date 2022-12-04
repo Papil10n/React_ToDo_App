@@ -2,6 +2,8 @@ import './App.scss';
 import {Routes, Route, Navigate} from "react-router-dom";
 import HomePageContainer from "./component/HomePage/HomePage";
 import TodoContainer from "./component/Todo/Todo";
+import NewTodos from "./component/NewTodos/NewTodos";
+import NewTodosContainer from "./component/NewTodos/NewTodos";
 
 
 const NewTask = (props) => {
@@ -17,7 +19,7 @@ function App() {
                         <Route path='/' element={<Navigate to='/todo'/>}/>
                         <Route path='/todo' element={<HomePageContainer/>}/>
                         <Route path='/todo/*' element={<TodoContainer />}/>
-                        <Route path='/new_task' element={<NewTask/>}/>
+                        <Route path='/new_todo' element={<NewTodosContainer/>}/>
                     </Routes>
                 </div>
             </div>
