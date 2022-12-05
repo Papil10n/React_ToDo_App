@@ -5,6 +5,7 @@ import TodoContainer from "./component/Todo/Todo";
 import NewTodos from "./component/NewTodos/NewTodos";
 import NewTodosContainer from "./component/NewTodos/NewTodos";
 import NewTask from "./component/NewTask/NewTask";
+import NewTaskContainer from "./component/NewTask/NewTask";
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
                         <Route path='/todo' element={<HomePageContainer/>}/>
                         <Route path='/todo/*' element={<TodoContainer />}/>
                         <Route path='/new_todo' element={<NewTodosContainer/>}/>
-                        <Route path='/new_task' element={<NewTask/>}/>
+                        <Route path='/todo/new_task' element={<NewTaskContainer/>}/>
                     </Routes>
                 </div>
             </div>

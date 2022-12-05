@@ -1,11 +1,12 @@
 // imports
 
 // actions
-const ADD_NEW_TASK = "toDo/today/ADD_NEW_TASK";
-const SET_TASK_MODE = "toDo/today/SET_TASK_MODE";
-const SET_CURRENT_TODOS = "toDo/today/SET_CURRENT_TODOS";
-const CREATE_NEW_TODO = "toDo/today/CREATE_NEW_TODO";
-const SET_CURRENT_DATE_WATCHING = "toDo/today/SET_CURRENT_DATE_WATCHING";
+const SET_TASK_MODE = "toDo/tasks/SET_TASK_MODE";
+const SET_CURRENT_TODOS = "toDo/tasks/SET_CURRENT_TODOS";
+const CREATE_NEW_TODO = "toDo/tasks/CREATE_NEW_TODO";
+const SET_CURRENT_DATE_WATCHING = "toDo/tasks/SET_CURRENT_DATE_WATCHING";
+const CREATE_NEW_TASK = "toDo/tasks/CREATE_NEW_TASK";
+const IS_SET_NEW_TASK_MODE = "toDo/tasks/IS_SET_NEW_TASK_MODE";
 
 
 // initial state
@@ -60,17 +61,13 @@ const initialState = {
     currentTodosNum: null,
     currentDateWatching: null,
     sectionsLength: null,
+    isSetNewTaskMode: false,
 }
 
 
 // reducer
 const tasksReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_NEW_TASK:
-            return {
-                ...state,
-                todayTasks: [...state.todayTasks, {id: 3, message: action.message, time: action.time}]
-            }
         case SET_TASK_MODE:
             return {
                 ...state, sections: [...state.sections.map(s => {
@@ -91,19 +88,45 @@ const tasksReducer = (state = initialState, action) => {
                 ...state,
                 sections: [...state.sections, {name: action.name, id: 3, tasks: {today: {}, tomorrow: {}, all: {}}}]
             }
+        case CREATE_NEW_TASK:
+            return {
+                ...state,
+                sections: [...state.sections.map(s => {
+                    if (s.id === action.sectionID) {
+                        const task = {id: action.id, message: action.taskMessage, time: action.taskTime, isDone: false}
+                        if (s.tasks.all.length) {
+                            s.tasks.all = [...s.tasks.all, task]
+                        } else {
+                            s.tasks.all = [task]
+                        }
+
+                    }
+                    return s;
+                })]
+            }
         case SET_CURRENT_DATE_WATCHING:
             return {...state, currentDateWatching: action.date}
+        case IS_SET_NEW_TASK_MODE:
+            return {...state, isSetNewTaskMode: action.mode}
         default:
             return state;
     }
 }
 
 // actionsCreator
-export const addNewTask = (message, time) => ({type: ADD_NEW_TASK, message, time});
 export const setTaskMode = (sectionId, taskId, mode) => ({type: SET_TASK_MODE, sectionId, taskId, mode});
 export const setCurrentTodos = (name, number) => ({type: SET_CURRENT_TODOS, name, number});
 export const createNewTodo = (name) => ({type: CREATE_NEW_TODO, name});
+export const createNewTask = (sectionID, taskMessage, taskTime, id) => ({
+    type: CREATE_NEW_TASK,
+    sectionID,
+    taskMessage,
+    taskTime,
+    id
+})
 export const setCurrentDateWatching = (date) => ({type: SET_CURRENT_DATE_WATCHING, date});
+export const changeNewTaskMode = (mode) => ({type: IS_SET_NEW_TASK_MODE, mode});
+
 
 // thunkCreator
 // export const taskModeChanger = (sectionId, taskId, mode) => dispatch => {

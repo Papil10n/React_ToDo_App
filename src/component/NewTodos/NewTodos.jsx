@@ -12,7 +12,7 @@ const NewTodos = (props) => {
     }
 
     const createTodos = () => {
-        if (validate(name)) {
+        if (validateTodos(name)) {
             // use trim()
             // dispatch to state new block
             // redirect to homePage
@@ -25,7 +25,7 @@ const NewTodos = (props) => {
     }
 
     // transfer to another file
-    const validate = (todoName) => {
+    const validateTodos = (todoName) => {
         return todoName.length < 10  && todoName.length !== 0
     }
 
@@ -42,8 +42,8 @@ const NewTodos = (props) => {
                 </div>
 
                 <div className="newTodo__data">
-                    <input onChange={(e)=>{changeTodosName(e)}} type="text" placeholder="Set Name"/>
-                    <Link className="newTodo__data__link" to='/todo' onClick={createTodos}>Create</Link>
+                    <input onChange={(e)=>{changeTodosName(e)}} type="text" placeholder="Set Name" value={name}/>
+                    <Link className="newTodo__data__link" to='/todo' onClick={createTodos} >Create</Link>
                 </div>
             </div>
         </div>

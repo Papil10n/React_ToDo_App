@@ -25,7 +25,7 @@ const HomePage = (props) => {
                 </div>
                 {sections}
                 <div className='home__add__task__wrap'>
-                    {sections.length <= 4 ? <NavLink to='/new_todo' className='home__add__task'/> : null}
+                    {sections.length < 4 ? <NavLink to='/new_todo' className='home__add__task'/> : null}
                 </div>
             </div>
         </div>
