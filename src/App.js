@@ -6,6 +6,7 @@ import NewTodos from "./component/NewTodos/NewTodos";
 import NewTodosContainer from "./component/NewTodos/NewTodos";
 import NewTask from "./component/NewTask/NewTask";
 import NewTaskContainer from "./component/NewTask/NewTask";
+import {setAvailableCategory} from "./redux/task-reducer";
 
 
 function App() {

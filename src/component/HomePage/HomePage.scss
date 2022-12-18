@@ -47,6 +47,10 @@
   font-size: 34px;
   font-weight: bold;
 }
+.home__sections {
+  height: 270px;
+  overflow-y: auto;
+}
 .home__section__container {
   max-height: 290px;
   overflow-y: auto;
@@ -63,6 +67,9 @@
   }
   &:active {
     scale: 1.03;
+  }
+  & a {
+    color: white;
   }
 }
 .home__section__content {

@@ -1,13 +1,17 @@
 // imports
+import {setCategory, showCategoryes} from "../LocalStorage/LS";
 
 // actions
+
 const SET_TASK_MODE = "toDo/tasks/SET_TASK_MODE";
 const SET_CURRENT_TODOS = "toDo/tasks/SET_CURRENT_TODOS";
 const CREATE_NEW_TODO = "toDo/tasks/CREATE_NEW_TODO";
 const SET_CURRENT_DATE_WATCHING = "toDo/tasks/SET_CURRENT_DATE_WATCHING";
 const CREATE_NEW_TASK = "toDo/tasks/CREATE_NEW_TASK";
 const IS_SET_NEW_TASK_MODE = "toDo/tasks/IS_SET_NEW_TASK_MODE";
+const NEW_TODO_CREATING = "toDo/tasks/NEW_TODO_CREATING";
 
+const SET_AVAILABLE_CATEGORY = "toDo/tasks/SET_AVAILABLE_CATEGORY";
 
 // initial state
 const initialState = {
@@ -55,13 +59,15 @@ const initialState = {
                 ],
             }
         },
-        // add here from home
     ],
+    categoryes: ['1'],
+
     currentTodos: null,
     currentTodosNum: null,
     currentDateWatching: null,
     sectionsLength: null,
     isSetNewTaskMode: false,
+    isNewTodoCreating: false,
 }
 
 
@@ -84,6 +90,7 @@ const tasksReducer = (state = initialState, action) => {
         case SET_CURRENT_TODOS:
             return {...state, currentTodos: action.name, currentTodosNum: action.number}
         case CREATE_NEW_TODO:
+            setCategory(action.name);
             return {
                 ...state,
                 sections: [...state.sections, {name: action.name, id: 3, tasks: {today: {}, tomorrow: {}, all: {}}}]
@@ -108,6 +115,12 @@ const tasksReducer = (state = initialState, action) => {
             return {...state, currentDateWatching: action.date}
         case IS_SET_NEW_TASK_MODE:
             return {...state, isSetNewTaskMode: action.mode}
+        case NEW_TODO_CREATING:
+            return {...state, isNewTodoCreating: action.mode}
+
+        case SET_AVAILABLE_CATEGORY:
+            return {...state, categoryes: showCategoryes()}
+
         default:
             return state;
     }
@@ -126,6 +139,9 @@ export const createNewTask = (sectionID, taskMessage, taskTime, id) => ({
 })
 export const setCurrentDateWatching = (date) => ({type: SET_CURRENT_DATE_WATCHING, date});
 export const changeNewTaskMode = (mode) => ({type: IS_SET_NEW_TASK_MODE, mode});
+export const isNewTodoCreating = (mode) => ({type: NEW_TODO_CREATING, mode});
+
+export const setAvailableCategory = () => ({type: SET_AVAILABLE_CATEGORY});
 
 
 // thunkCreator

@@ -8,12 +8,11 @@ import {changeNewTaskMode} from "../../redux/task-reducer";
 
 
 const Todo = (props) => {
-
     return props.isSetNewTaskMode ? <NewTask/> : <div>
         <HeaderContainer/>
         <NavigatesContainer currentTodos={props.currentTodos}/>
         <div className="app__main">
-            <TasksContainer date={props.currentDateWatching} currentTodosNum={props.currentTodosNum}/>
+            <TasksContainer date={props.currentDateWatching} currentTodos={props.currentTodos} currentTodosNum={props.currentTodosNum}/>
         </div>
         <Footer changeNewTaskMode={props.changeNewTaskMode} date={props.currentDateWatching} currentTodos={props.currentTodos}/>
     </div>

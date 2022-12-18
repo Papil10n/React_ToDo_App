@@ -1,14 +1,20 @@
 import {NavLink} from "react-router-dom";
+import React from "react";
 import "./HomePage.scss";
 import {connect} from "react-redux";
 import Section from "./Section/Section";
-import  {setCurrentDateWatching, setCurrentTodos} from "../../redux/task-reducer";
+import {setAvailableCategory, setCurrentDateWatching, setCurrentTodos} from "../../redux/task-reducer";
 
 const HomePage = (props) => {
-    const sections = props.sections.map((s, i) => <Section key={s.id} number={i}
-                                                           setCurrentDateWatching={props.setCurrentDateWatching}
-                                                           setCurrentTodos={props.setCurrentTodos}
-                                                           name={s.name} tasks={s.tasks}/>)
+
+
+    let categoryes = [];
+
+    if (props.categoryes) {
+        categoryes = props.categoryes.map((s, i) => <Section key={i} name={s} />)
+    }
+
+
     return (
         <div className='home'>
             <div className='home__container'>
@@ -23,21 +29,40 @@ const HomePage = (props) => {
                         <p className='home__top__nick'>Guest</p>
                     </div>
                 </div>
-                {sections}
+                <div className="home__sections">
+                    {categoryes}
+                </div>
                 <div className='home__add__task__wrap'>
-                    {sections.length < 4 ? <NavLink to='/new_todo' className='home__add__task'/> : null}
+                    {categoryes.length < 10 ? <NavLink to='/new_todo' className='home__add__task'/> : null}
                 </div>
             </div>
         </div>
     )
 }
 
+
+
+class HomePageContainer extends React.Component {
+
+    componentDidMount() {
+        this.props.setAvailableCategory();
+    }
+
+
+    render() {
+        return (
+            <HomePage categoryes={this.props.categoryes} />
+        )
+    }
+
+}
+
 const mstp = (state) => {
     return {
-        sections: state.tasksReducer.sections
+        sections: state.tasksReducer.sections,
+        categoryes: state.tasksReducer.categoryes,
     }
 }
 
-const HomePageContainer = connect(mstp, {setCurrentTodos, setCurrentDateWatching})(HomePage);
-
-export default HomePageContainer;
+export default connect(mstp, {setCurrentTodos, setCurrentDateWatching, setAvailableCategory,})(HomePageContainer);
+;

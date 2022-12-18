@@ -13,10 +13,8 @@ const NewTodos = (props) => {
 
     const createTodos = () => {
         if (validateTodos(name)) {
-            // use trim()
-            // dispatch to state new block
-            // redirect to homePage
-            props.createNewTodo(name);
+
+            props.createNewTodo(name.trim());
             return <Navigate to='/todo' />
         } else {
             alert('Please enter valid Todo Name')
@@ -26,7 +24,7 @@ const NewTodos = (props) => {
 
     // transfer to another file
     const validateTodos = (todoName) => {
-        return todoName.length < 10  && todoName.length !== 0
+        return name.length < 14  && name.length !== 0
     }
 
     return (
@@ -43,7 +41,7 @@ const NewTodos = (props) => {
 
                 <div className="newTodo__data">
                     <input onChange={(e)=>{changeTodosName(e)}} type="text" placeholder="Set Name" value={name}/>
-                    <Link className="newTodo__data__link" to='/todo' onClick={createTodos} >Create</Link>
+                    <button className="newTodo__data__link" onClick={createTodos} >Create</button>
                 </div>
             </div>
         </div>

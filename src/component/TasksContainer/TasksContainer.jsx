@@ -4,10 +4,11 @@ import Task from "../Task/Task";
 import {setTaskMode} from "../../redux/task-reducer";
 
 const Tasks = (props) => {
-    let tasks;
+    console.log('орисовка таскс')
     let taskItems;
-    if (props.sections[props.currentTodosNum].tasks[props.date].length !== undefined) {
-        tasks = [...props.sections[props.currentTodosNum].tasks[props.date]];
+
+    if (props.sections[props.currentTodosNum].tasks.all.length !== undefined) {
+        let tasks = [...props.sections[props.currentTodosNum].tasks.all];
         taskItems = tasks.map(task => <Task sNum={props.currentTodosNum} mode={props.date}
                                             setTaskMode={props.setTaskMode} key={task.id} task={task}></Task>);
     }
