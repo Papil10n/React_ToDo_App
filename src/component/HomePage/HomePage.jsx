@@ -3,17 +3,17 @@ import React from "react";
 import "./HomePage.scss";
 import {connect} from "react-redux";
 import Section from "./Section/Section";
-import {setAvailableCategory, setCurrentDateWatching, setCurrentTodos} from "../../redux/task-reducer";
+import tasksReducer, {
+    deleteCategory,
+    setAvailableCategory,
+    setCurrentDateWatching,
+    setCurrentTodos
+} from "../../redux/task-reducer";
 
 const HomePage = (props) => {
 
-
-    let categoryes = [];
-
-    if (props.categoryes) {
-        categoryes = props.categoryes.map((s, i) => <Section key={i} name={s} />)
-    }
-
+    let items = props.categoryes.map((item, index) => <Section key={index} name={item.name}
+                                                               deleteCategory={props.deleteCategory}/>)
 
     return (
         <div className='home'>
@@ -30,10 +30,11 @@ const HomePage = (props) => {
                     </div>
                 </div>
                 <div className="home__sections">
-                    {categoryes}
+                    {items}
                 </div>
                 <div className='home__add__task__wrap'>
-                    {categoryes.length < 10 ? <NavLink to='/new_todo' className='home__add__task'/> : null}
+                    {/*{categoryes.length < 10 ? <NavLink to='/new_todo' className='home__add__task'/> : null}*/}
+                    <NavLink to='/new_todo' className='home__add__task'/>
                 </div>
             </div>
         </div>
@@ -41,28 +42,12 @@ const HomePage = (props) => {
 }
 
 
-
-class HomePageContainer extends React.Component {
-
-    componentDidMount() {
-        this.props.setAvailableCategory();
-    }
-
-
-    render() {
-        return (
-            <HomePage categoryes={this.props.categoryes} />
-        )
-    }
-
-}
-
 const mstp = (state) => {
     return {
-        sections: state.tasksReducer.sections,
         categoryes: state.tasksReducer.categoryes,
     }
 }
 
-export default connect(mstp, {setCurrentTodos, setCurrentDateWatching, setAvailableCategory,})(HomePageContainer);
+export default connect(mstp, {setCurrentTodos, setCurrentDateWatching,
+    setAvailableCategory, deleteCategory})(HomePage);
 ;

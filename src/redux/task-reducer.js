@@ -1,5 +1,5 @@
 // imports
-import {setCategory, showCategoryes} from "../LocalStorage/LS";
+import {findAndDeleteCategory, setCategory, showCategoryes} from "../LocalStorage/LS";
 
 // actions
 
@@ -12,6 +12,8 @@ const IS_SET_NEW_TASK_MODE = "toDo/tasks/IS_SET_NEW_TASK_MODE";
 const NEW_TODO_CREATING = "toDo/tasks/NEW_TODO_CREATING";
 
 const SET_AVAILABLE_CATEGORY = "toDo/tasks/SET_AVAILABLE_CATEGORY";
+const DELETE_CATEGORY = "toDo/tasks/DELETE_CATEGORY";
+
 
 // initial state
 const initialState = {
@@ -30,37 +32,8 @@ const initialState = {
                 ],
             }
         },
-        {
-            name: "work",
-            id: 1,
-            tasks: {
-                today: [],
-                tomorrow: [],
-                all: [
-                    {id: 4, message: 'Do push-ups', time: '04/12/2022', isDone: false},
-                    {id: 5, message: 'Play with cat', time: '04/12/2022', isDone: false},
-                    {id: 6, message: 'Buy the milk', time: '05/12/2022', isDone: false},
-                    {id: 7, message: 'Do homework', time: '05/12/2022', isDone: false},
-                    {id: 8, message: 'Walk the dog', time: '06/12/2022', isDone: false},
-                ],
-            }
-        },
-        {
-            name: 'gym',
-            id: 2,
-            tasks: {
-                today: [],
-                tomorrow: [],
-                all: [
-                    {id: 9, message: 'Buy the milk', time: '04/12/2022', isDone: false},
-                    {id: 10, message: 'buy new car', time: '04/12/2022', isDone: false},
-                    {id: 11, message: 'buy new car2', time: '04/12/2022', isDone: false},
-                    {id: 15, message: 'buy new car3', time: '05/12/2022', isDone: false},
-                ],
-            }
-        },
     ],
-    categoryes: ['1'],
+    categoryes: [],
 
     currentTodos: null,
     currentTodosNum: null,
@@ -120,7 +93,8 @@ const tasksReducer = (state = initialState, action) => {
 
         case SET_AVAILABLE_CATEGORY:
             return {...state, categoryes: showCategoryes()}
-
+        case DELETE_CATEGORY:
+            return {...state, categoryes: findAndDeleteCategory(action.name)}
         default:
             return state;
     }
@@ -142,7 +116,7 @@ export const changeNewTaskMode = (mode) => ({type: IS_SET_NEW_TASK_MODE, mode});
 export const isNewTodoCreating = (mode) => ({type: NEW_TODO_CREATING, mode});
 
 export const setAvailableCategory = () => ({type: SET_AVAILABLE_CATEGORY});
-
+export const deleteCategory = (name) => ({type: DELETE_CATEGORY, name});
 
 // thunkCreator
 // export const taskModeChanger = (sectionId, taskId, mode) => dispatch => {

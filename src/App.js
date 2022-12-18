@@ -1,4 +1,5 @@
 import './App.scss';
+import React from "react";
 import {Routes, Route, Navigate} from "react-router-dom";
 import HomePageContainer from "./component/HomePage/HomePage";
 import TodoContainer from "./component/Todo/Todo";
@@ -7,9 +8,10 @@ import NewTodosContainer from "./component/NewTodos/NewTodos";
 import NewTask from "./component/NewTask/NewTask";
 import NewTaskContainer from "./component/NewTask/NewTask";
 import {setAvailableCategory} from "./redux/task-reducer";
+import {connect} from "react-redux";
 
 
-function App() {
+const App = (props) => {
     return (
         <div className="app">
             <div className="app__container">
@@ -28,4 +30,18 @@ function App() {
     )
 }
 
-export default App;
+const mstp = (state) => {
+    return {}
+}
+
+class AppContainer extends React.Component {
+    componentDidMount() {
+        this.props.setAvailableCategory();
+    }
+
+    render() {
+        return <App />
+    }
+}
+
+export default connect(mstp, {setAvailableCategory})(AppContainer);
