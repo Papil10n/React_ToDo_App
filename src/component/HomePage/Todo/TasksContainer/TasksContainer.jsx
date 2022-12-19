@@ -1,7 +1,7 @@
 import "./Task.scss";
 import {connect} from "react-redux";
-import Task from "../Task/Task";
-import {setTaskMode} from "../../redux/task-reducer";
+import Task from "./Task/Task";
+import {setTaskMode} from "../../../../redux/task-reducer";
 
 
 const Tasks = (props) => {

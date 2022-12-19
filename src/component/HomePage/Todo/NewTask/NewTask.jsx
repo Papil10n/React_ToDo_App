@@ -1,7 +1,7 @@
 import "./NewTask.scss";
 import {useState} from "react";
 import {connect} from "react-redux";
-import {changeNewTaskMode, createNewTask} from "../../redux/task-reducer";
+import {changeNewTaskMode, createNewTask} from "../../../../redux/task-reducer";
 
 const NewTask = (props) => {
     let [task, setTask] = useState();

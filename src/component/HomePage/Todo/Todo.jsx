@@ -1,15 +1,15 @@
-import Footer from "../Footer/Footer";
+import Footer from "./Footer/Footer";
 import {connect} from "react-redux";
-import TasksContainer from "../TasksContainer/TasksContainer";
-import NewTask from "../NewTask/NewTask";
+import TasksContainer from "./TasksContainer/TasksContainer";
+import NewTask from "./NewTask/NewTask";
 import {
     changeNewTaskMode,
     setAvailableCategory,
     settingWatchingCategory,
     watchingCategoryMode
-} from "../../redux/task-reducer";
-import Header from "../Header/Header";
-import Navigates from "../Navigates/Navigate";
+} from "../../../redux/task-reducer";
+import Header from "./Header/Header";
+import Navigates from "./Navigates/Navigate";
 
 
 const Todo = (props) => {

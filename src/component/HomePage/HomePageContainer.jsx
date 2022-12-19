@@ -9,7 +9,7 @@ import {
     setNewCategoryCreatingMode, settingWatchingCategory, watchingCategoryMode
 } from "../../redux/task-reducer";
 import HomePage from "./HomePage";
-import TodoContainer from "../Todo/Todo";
+import TodoContainer from "./Todo/Todo";
 
 
 const HomePageCont = (props) => {
