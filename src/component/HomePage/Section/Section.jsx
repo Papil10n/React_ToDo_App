@@ -1,6 +1,4 @@
 import {NavLink} from "react-router-dom";
-import {deleteCategory, settingWatchingCategory} from "../../../redux/task-reducer";
-
 
 const Section = (props) => {
 
@@ -11,7 +9,7 @@ const Section = (props) => {
     }
 
     const clearCategory = (name) => {
-        props.deleteCategory(name)
+        props.deleteCategory(name);
     }
 
     return (
@@ -19,7 +17,7 @@ const Section = (props) => {
             <div>
                 <div className='home__section__content'>
                     <div>
-                        <button onClick={()=>clearCategory(props.name)}>Delete</button>
+                        <button onClick={() => clearCategory(props.name)}>Delete</button>
                     </div>
                     <NavLink onClick={setWatchingCategory} to={`${props.name}/all`}>
                         <div className='section__title'>{props.name}</div>

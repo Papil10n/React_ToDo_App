@@ -20,6 +20,8 @@ export const setCategory = (category) => {
     categoryes !== null ? categoryes.push(newCategoryObj) : categoryes = [newCategoryObj];
 
     localStorage.setItem('categoryes', JSON.stringify(categoryes));
+
+    return newCategoryObj;
 }
 export const findAndDeleteCategory = (name) => {
     let categoryes = JSON.parse(localStorage.getItem('categoryes'));
@@ -47,21 +49,4 @@ export const taskModeRefresh = (categoryes, aName, aMode, aMessage) => {
 
     localStorage.setItem('categoryes', JSON.stringify(newCategoryes));
     return newCategoryes;
-}
-
-// add settings
-export const setWatchingCategory = (name) => {
-    localStorage.setItem('watchingCategory', JSON.stringify(name));
-    return name;
-}
-export const getWatchingCategory = () => {
-    return JSON.parse(localStorage.getItem('watchingCategory'));
-}
-//
-export const setCategoryMode = (name) => {
-    localStorage.setItem('watchingCategoryMode', JSON.stringify(name));
-    return name;
-}
-export const getCategoryMode = () => {
-    return JSON.parse(localStorage.getItem('watchingCategoryMode'));
 }

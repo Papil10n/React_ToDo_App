@@ -1,5 +1,4 @@
 import "./NewTask.scss";
-import {Navigate, NavLink} from "react-router-dom";
 import {useState} from "react";
 import {connect} from "react-redux";
 import {changeNewTaskMode, createNewTask} from "../../redux/task-reducer";
@@ -19,12 +18,11 @@ const NewTask = (props) => {
     }
     const monthChanger = (e) => {
         e.target.value > 0 && e.target.value < 13 ? setMonth(e.target.value) : alert('you try to set invalid month')
-
     }
     const yearChanger = (e) => {
         e.target.value > 2022 && e.target.value < 2071 ? setYear(e.target.value) : alert('you try to set invalid year')
-
     }
+
     const dataSubmit = () => {
 
         if (validateTask(task)) {

@@ -1,22 +1,10 @@
 import {NavLink} from "react-router-dom";
 import React from "react";
 import "./HomePage.scss";
-import {connect} from "react-redux";
-import Section from "./Section/Section";
-import tasksReducer, {
-    deleteCategory,
-    setAvailableCategory,
-    setCurrentDateWatching,
-    setCurrentTodos, setNewCategoryCreatingMode, settingWatchingCategory, watchingCategoryMode
-} from "../../redux/task-reducer";
+
+
 
 const HomePage = (props) => {
-
-    let items = props.categoryes.map((item, index) => <Section key={index} name={item.name}
-                                                               deleteCategory={props.deleteCategory}
-                                                               watchingCategoryMode={props.watchingCategoryMode}
-                                                               settingWatchingCategory={props.settingWatchingCategory}/>)
-
     return (
         <div className='home'>
             <div className='home__container'>
@@ -32,11 +20,11 @@ const HomePage = (props) => {
                     </div>
                 </div>
                 <div className="home__sections">
-                    {items}
+                    {props.items}
                 </div>
                 <div className='home__add__task__wrap'>
                     {props.categoryes.length < 10 ?
-                        <NavLink to='/new_todo' onClick={()=>props.setNewCategoryCreatingMode(true)}
+                        <NavLink to='/new_todo' onClick={() => props.setNewCategoryCreatingMode(true)}
                                  className='home__add__task'/> : null}
                 </div>
             </div>
@@ -45,14 +33,4 @@ const HomePage = (props) => {
 }
 
 
-const mstp = (state) => {
-    return {
-        categoryes: state.tasksReducer.categoryes,
-    }
-}
-
-export default connect(mstp, {
-    settingWatchingCategory, setCurrentDateWatching,
-    setAvailableCategory, deleteCategory, watchingCategoryMode, setNewCategoryCreatingMode,
-})(HomePage);
-;
+export default HomePage;

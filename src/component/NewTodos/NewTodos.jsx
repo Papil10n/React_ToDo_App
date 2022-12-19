@@ -1,8 +1,8 @@
 import "./NewTodos.scss";
-import {Link, Navigate, NavLink} from "react-router-dom";
+import {Navigate, NavLink} from "react-router-dom";
 import {useState} from "react";
 import {connect} from "react-redux";
-import {createNewTodo} from "../../redux/task-reducer";
+import {createNewCategory, setNewCategoryCreatingMode} from "../../redux/task-reducer";
 
 const NewTodos = (props) => {
     let [name, setName] = useState('');
@@ -14,16 +14,19 @@ const NewTodos = (props) => {
     const createTodos = () => {
         if (validateTodos(name)) {
 
-            props.createNewTodo(name.trim());
+            props.createNewCategory(name.trim());
+            props.setNewCategoryCreatingMode(false);
             return <Navigate to='/todo' />
+
         } else {
             alert('Please enter valid Todo Name')
             // show problem
         }
+
     }
 
     // transfer to another file
-    const validateTodos = (todoName) => {
+    const validateTodos = () => {
         return name.length < 14  && name.length !== 0
     }
 
@@ -32,7 +35,7 @@ const NewTodos = (props) => {
             <div className="newTodo__container">
                 <div className="newTodo__topInfo">
                     <div className="newTodo__back">
-                        <NavLink to="/todo" className="newTodo__backBtn" />
+                        <NavLink to="/todo" onClick={()=>props.setNewCategoryCreatingMode(false)} className="newTodo__backBtn" />
                     </div>
                     <div className="newTodo__title">
                         Create new ToDo List
@@ -48,10 +51,10 @@ const NewTodos = (props) => {
     )
 }
 
-const mstp = (state) => {
+const mstp = () => {
     return {}
 }
 
-const NewTodosContainer = connect(mstp, {createNewTodo})(NewTodos);
+const NewTodosContainer = connect(mstp, {createNewCategory, setNewCategoryCreatingMode})(NewTodos);
 
 export default NewTodosContainer;

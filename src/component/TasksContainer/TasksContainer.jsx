@@ -3,10 +3,9 @@ import {connect} from "react-redux";
 import Task from "../Task/Task";
 import {setTaskMode} from "../../redux/task-reducer";
 
+
 const Tasks = (props) => {
     let taskItems = [];
-
-
     if (props.categoryes.length > 0) {
         let tasks = props.categoryes.find(item => item.name === props.watchingCategory).tasks.all;
 
