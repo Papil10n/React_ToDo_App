@@ -4,13 +4,15 @@ import Task from "../Task/Task";
 import {setTaskMode} from "../../redux/task-reducer";
 
 const Tasks = (props) => {
-    console.log('орисовка таскс')
-    let taskItems;
+    let taskItems = [];
 
-    if (props.sections[props.currentTodosNum].tasks.all.length !== undefined) {
-        let tasks = [...props.sections[props.currentTodosNum].tasks.all];
-        taskItems = tasks.map(task => <Task sNum={props.currentTodosNum} mode={props.date}
-                                            setTaskMode={props.setTaskMode} key={task.id} task={task}></Task>);
+
+    if (props.categoryes.length > 0) {
+        let tasks = props.categoryes.find(item => item.name === props.watchingCategory).tasks.all;
+
+        taskItems = tasks.map((item, index) => <Task categoryMode={props.categoryMode}
+                                                     setTaskMode={props.setTaskMode} key={index}
+                                                     categoryName={props.watchingCategory} data={item}/>);
     }
 
     return (
@@ -22,7 +24,9 @@ const Tasks = (props) => {
 
 const mstp = (state) => {
     return {
-        sections: state.tasksReducer.sections
+        categoryes: state.tasksReducer.categoryes,
+        watchingCategory: state.tasksReducer.watchingCategory,
+        categoryMode: state.tasksReducer.categoryMode,
     }
 }
 

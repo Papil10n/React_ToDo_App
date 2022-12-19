@@ -6,7 +6,7 @@ import {setCurrentTodos} from "../../redux/task-reducer";
 const Header = (props) => {
     return (<>
         <div className="app__head">
-            <NavLink to='/todo' onClick={()=>{props.setCurrentTodos(null)}} className='app__backBtn' />
+            <NavLink to='/todo' onClick={()=>{}} className='app__backBtn' />
             <h1 className="title">All Tasks</h1>
         </div>
     </>)
@@ -14,6 +14,6 @@ const Header = (props) => {
 
 const mstp = (state) => ({});
 
-const HeaderContainer = connect(mstp, {setCurrentTodos})(Header);
+const HeaderContainer = connect(mstp, {})(Header);
 
 export default HeaderContainer;

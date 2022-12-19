@@ -7,13 +7,15 @@ import tasksReducer, {
     deleteCategory,
     setAvailableCategory,
     setCurrentDateWatching,
-    setCurrentTodos
+    setCurrentTodos, setNewCategoryCreatingMode, settingWatchingCategory, watchingCategoryMode
 } from "../../redux/task-reducer";
 
 const HomePage = (props) => {
 
     let items = props.categoryes.map((item, index) => <Section key={index} name={item.name}
-                                                               deleteCategory={props.deleteCategory}/>)
+                                                               deleteCategory={props.deleteCategory}
+                                                               watchingCategoryMode={props.watchingCategoryMode}
+                                                               settingWatchingCategory={props.settingWatchingCategory}/>)
 
     return (
         <div className='home'>
@@ -33,8 +35,9 @@ const HomePage = (props) => {
                     {items}
                 </div>
                 <div className='home__add__task__wrap'>
-                    {/*{categoryes.length < 10 ? <NavLink to='/new_todo' className='home__add__task'/> : null}*/}
-                    <NavLink to='/new_todo' className='home__add__task'/>
+                    {props.categoryes.length < 10 ?
+                        <NavLink to='/new_todo' onClick={()=>props.setNewCategoryCreatingMode(true)}
+                                 className='home__add__task'/> : null}
                 </div>
             </div>
         </div>
@@ -48,6 +51,8 @@ const mstp = (state) => {
     }
 }
 
-export default connect(mstp, {setCurrentTodos, setCurrentDateWatching,
-    setAvailableCategory, deleteCategory})(HomePage);
+export default connect(mstp, {
+    settingWatchingCategory, setCurrentDateWatching,
+    setAvailableCategory, deleteCategory, watchingCategoryMode, setNewCategoryCreatingMode,
+})(HomePage);
 ;
