@@ -2,10 +2,14 @@
   padding-block: 10px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 20px;
-  width: 70%;
+  width: 90%;
   margin-left: 5%;
   margin-bottom: 10px;
+}
+.app_task__main {
+  display: flex;
 }
 
 .app__mode {
@@ -23,6 +27,12 @@
 
 }
 .app__task__content__task {
+  transition: all 1s ease 0s;
+
+}
+.app__task__content__doneTask {
+  text-decoration: line-through #858585;
+  transition: all 1s ease 0s;
 
 }
 .app__task__content__time {

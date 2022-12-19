@@ -1,7 +1,7 @@
 // imports
 import {
-    findAndDeleteCategory,
-    setCategory,
+    findAndDeleteCategory, getNonDeletedTask, saveNewUserName,
+    setCategory, setNewTaskToLS,
     showCategoryes,
     taskModeRefresh,
 } from "../LocalStorage/LS";
@@ -17,15 +17,21 @@ const WATCHING_CATEGORY_MODE = "toDo/tasks/WATCHING_CATEGORY_MODE";
 const CREATE_NEW_CATEGORY = "toDo/tasks/CREATE_NEW_CATEGORY";
 const SET_NEW_CATEGORY_CREATING_MODE = "toDo/tasks/SET_NEW_CATEGORY_CREATING_MODE";
 const IS_SET_NEW_TASK_MODE = "toDo/tasks/IS_SET_NEW_TASK_MODE";
+const IS_POPUP_SHOWING = "toDo/tasks/IS_POPUP_SHOWING";
+const CHANGE_USERNAME = "toDo/tasks/CHANGE_USERNAME";
+const DELETE_TASK = "toDo/tasks/DELETE_TASK";
+
 
 
 // initial state
 const initialState = {
+    userName: null,
     categoryes: [],
     watchingCategory: null,
     categoryMode: null,
     isNewCategoryCreating: false,
     isNewTaskCreating: false,
+    isPopUpShowing: false,
 }
 
 
@@ -42,6 +48,10 @@ const tasksReducer = (state = initialState, action) => {
             return {...state, isNewTaskCreating: action.mode}
         case WATCHING_CATEGORY_MODE:
             return {...state, categoryMode: action.mode}
+        case IS_POPUP_SHOWING:
+            return {...state, isPopUpShowing: action.mode}
+        case CHANGE_USERNAME:
+            return {...state, userName: saveNewUserName(action.username)}
         case CREATE_NEW_CATEGORY:
             return {
                 ...state,
@@ -50,18 +60,12 @@ const tasksReducer = (state = initialState, action) => {
         case CREATE_NEW_TASK:
             return {
                 ...state,
-                sections: [...state.sections.map(s => {
-                    if (s.id === action.sectionID) {
-                        const task = {id: action.id, message: action.taskMessage, time: action.taskTime, isDone: false}
-                        if (s.tasks.all.length) {
-                            s.tasks.all = [...s.tasks.all, task]
-                        } else {
-                            s.tasks.all = [task]
-                        }
-
-                    }
-                    return s;
-                })]
+                categoryes: [...setNewTaskToLS(state.categoryes, action.name, action.message, action.time)]
+            }
+        case DELETE_TASK:
+            return {
+                ...state,
+                categoryes: [...getNonDeletedTask(state.categoryes, action.cName, action.cMode, action.tMessage)]
             }
         case SET_NEW_CATEGORY_CREATING_MODE:
             return {...state, isNewCategoryCreating: action.mode}
@@ -75,13 +79,7 @@ const tasksReducer = (state = initialState, action) => {
 }
 
 // actionsCreator
-export const createNewTask = (sectionID, taskMessage, taskTime, id) => ({
-    type: CREATE_NEW_TASK,
-    sectionID,
-    taskMessage,
-    taskTime,
-    id
-})
+export const createNewTask = (name, message, time) => ({type: CREATE_NEW_TASK,name,message,time});
 export const setCurrentDateWatching = (date) => ({type: SET_CURRENT_DATE_WATCHING, date});
 export const createNewCategory = (name) => ({type: CREATE_NEW_CATEGORY, name});
 export const setAvailableCategory = () => ({type: SET_AVAILABLE_CATEGORY});
@@ -91,6 +89,9 @@ export const watchingCategoryMode = (mode) => ({type: WATCHING_CATEGORY_MODE, mo
 export const setTaskMode = (name, mode, message) => ({type: SET_TASK_MODE, name, mode, message});
 export const setNewCategoryCreatingMode = (mode) => ({type: SET_NEW_CATEGORY_CREATING_MODE, mode});
 export const changeNewTaskMode = (mode) => ({type: IS_SET_NEW_TASK_MODE, mode});
+export const setToMountPopUp = (mode) => ({type: IS_POPUP_SHOWING, mode});
+export const setNewUserName = (username) => ({type: CHANGE_USERNAME, username});
+export const deleteTask = (cName, cMode, tMessage) => ({type: DELETE_TASK, cName, cMode, tMessage});
 
 
 // export

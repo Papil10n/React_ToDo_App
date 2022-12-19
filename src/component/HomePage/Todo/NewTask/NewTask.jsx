@@ -30,8 +30,7 @@ const NewTask = (props) => {
             // dispatch to state new block
             // redirect to homePage
             const time = `${day}/${month}/${year}`;
-            const uniqId = Math.floor(Math.random()*1000);
-            props.createNewTask(props.currentTodosNum, task, time, uniqId)
+            props.createNewTask(props.watchingCategory, task, time)
             props.changeNewTaskMode(false);
 
         } else {
@@ -91,7 +90,7 @@ const NewTask = (props) => {
 
 const mstp = (state) => {
     return {
-        currentTodosNum: state.tasksReducer.currentTodosNum,
+        watchingCategory: state.tasksReducer.watchingCategory,
     }
 }
 

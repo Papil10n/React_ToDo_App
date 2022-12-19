@@ -10,7 +10,7 @@ import AppContainer from "./AppContainer";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <BrowserRouter>
+    <BrowserRouter basename="/React_ToDo_App">
         <Provider store={store}>
             <AppContainer/>
         </Provider>

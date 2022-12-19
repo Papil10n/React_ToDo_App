@@ -13,7 +13,6 @@ import Navigates from "./Navigates/Navigate";
 
 
 const Todo = (props) => {
-
     return props.isNewTaskCreating ? <NewTask/> : <div>
         <Header settingWatchingCategory={props.settingWatchingCategory}/>
         <Navigates watchingCategory={props.watchingCategory} watchingCategoryMode={props.watchingCategoryMode}/>

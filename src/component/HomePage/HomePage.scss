@@ -4,6 +4,7 @@
   background-color: #182141;
   border-radius: 30px;
   color: white;
+  position: relative;
 }
 .home__container {
   max-width: 85%;
@@ -74,10 +75,28 @@
 }
 .home__section__content {
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
   align-items: center;
   min-height: 55px;
 }
+.home__section__delBtn {
+  margin-left: 10px;
+  font-size: 20px;
+  background: none;
+  color: white;
+  font-family: "Segoe UI", serif;
+  padding: 5px 15px;
+  border-radius: 10px;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+}
+.home__section__article {
+  padding: 10px 0 10px 10%;
+  margin-right: 5px;
+  border-radius: 10px;
+}
+
 .section__title {
   font-size: 24px;
   padding-right: 20px;
@@ -101,7 +120,7 @@
     content: '+';
     color: white;
     position: relative;
-    top: 0px; left: 11px;
+    top: 0; left: 11px;
   }
   &:hover {
     background-color: rgba(255, 255, 255, 0.14);

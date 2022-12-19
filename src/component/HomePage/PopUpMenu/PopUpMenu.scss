@@ -1,0 +1,82 @@
+.PopUp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 30px;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.76);
+
+}
+.PopUp__container {
+  width: 90%;
+  height: 30%;
+  border-radius: 15px;
+  padding: 10px;
+  background: linear-gradient(135deg, #5b5bf1, #9898fd);
+  box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.26);
+}
+.PopUp__top {
+  display: flex;
+  align-items: center;
+}
+.PopUp__text {
+  font-size: 18px;
+  font-family: "Segoe UI", serif;
+  line-height: 1.5;
+}
+.PopUp__backBtn {
+  position: relative;
+  top: -5px;
+  left: 5px;
+  background: none;
+  transition: all 0.3s ease 0s;
+  margin-right: 25px;
+  &:before {
+    content: "←";
+    font-size: 30px;
+    color: white;
+  }
+  &:hover {
+    cursor: pointer;
+    transform: rotate(-2deg);
+  }
+}
+.PopUp__input {
+  text-align: center;
+  margin: 15px 10px;
+  & input {
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #ccdaff;
+    border: 1px solid rgba(3, 3, 3, 0);
+    transition: all 0.3s ease 0s;
+    &:focus {
+      background-color: white;
+      border: 1px solid rgba(0, 0, 0, 1);
+    }
+  }
+}
+.PopUp__submitBtn {
+  text-align: right;
+  margin-right: 15px;
+  & button {
+    margin: 10px;
+    padding: 3px 7px;
+    font-size: 13px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0);
+    transition: all 0.5s ease 0s;
+    background-color: #c8c8ff;
+    &:hover {
+      background-color: white;
+      border: 1px solid black;
+    }
+  }
+}

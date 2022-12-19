@@ -1,7 +1,7 @@
 import "./Task.scss";
 import {connect} from "react-redux";
 import Task from "./Task/Task";
-import {setTaskMode} from "../../../../redux/task-reducer";
+import {deleteTask, setTaskMode} from "../../../../redux/task-reducer";
 
 
 const Tasks = (props) => {
@@ -11,7 +11,9 @@ const Tasks = (props) => {
 
         taskItems = tasks.map((item, index) => <Task categoryMode={props.categoryMode}
                                                      setTaskMode={props.setTaskMode} key={index}
-                                                     categoryName={props.watchingCategory} data={item}/>);
+                                                     categoryName={props.watchingCategory} data={item}
+                                                     deleteTask={props.deleteTask}
+        />);
     }
 
     return (
@@ -29,6 +31,6 @@ const mstp = (state) => {
     }
 }
 
-const TasksContainer = connect(mstp, {setTaskMode})(Tasks);
+const TasksContainer = connect(mstp, {setTaskMode, deleteTask})(Tasks);
 
 export default TasksContainer;
