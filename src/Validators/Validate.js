@@ -1,14 +1,9 @@
 const validate = {
     taskName: (task) => {
-        let result;
-        result = task ?
-            isNaN(+task) ?
-                task.trim().length <= 18 : false
-            : false;
-        return result;
+        return task.length < 50  && task.length !== 0 && isNaN(+task);
     },
     categoryName: (category) => {
-        return category.length < 14  && category.length !== 0 && isNaN(+category);
+        return category.length < 18  && category.length !== 0 && isNaN(+category);
     }
 }
 export const transformSuccessedName = (name) => {

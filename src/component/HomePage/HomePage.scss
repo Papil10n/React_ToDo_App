@@ -42,9 +42,11 @@
 
 }
 .home__top__hello {
+  user-select: none;
   font-size: 28px;
 }
 .home__top__nick {
+  user-select: none;
   font-size: 34px;
   font-weight: bold;
 }
@@ -58,6 +60,7 @@
   overflow-y: auto;
 }
 .home__section {
+  user-select: none;
   max-width: 94%;
   background-color: #6d6fff;
   border-radius: 10px;
@@ -101,6 +104,10 @@
 
 .section__title {
   font-size: 24px;
+  padding-right: 20px;
+}
+.section__title__sm {
+  font-size: 20px;
   padding-right: 20px;
 }
 .section__task__counter {

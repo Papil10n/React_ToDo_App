@@ -40,7 +40,7 @@ const tasksReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_TASK_MODE:
             return {
-                ...state, categoryes: [...taskModeRefresh(state.categoryes, action.name, action.mode, action.message)]
+                ...state, categoryes: [...taskModeRefresh(state.categoryes, action.name, action.message)]
             }
         case SET_WATCHING_CATEGORY:
             return {...state, watchingCategory: action.name}
@@ -65,7 +65,7 @@ const tasksReducer = (state = initialState, action) => {
         case DELETE_TASK:
             return {
                 ...state,
-                categoryes: [...getNonDeletedTask(state.categoryes, action.cName, action.cMode, action.tMessage)]
+                categoryes: [...getNonDeletedTask(state.categoryes, action.cName, action.tMessage)]
             }
         case SET_NEW_CATEGORY_CREATING_MODE:
             return {...state, isNewCategoryCreating: action.mode}
@@ -86,12 +86,12 @@ export const setAvailableCategory = () => ({type: SET_AVAILABLE_CATEGORY});
 export const deleteCategory = (name) => ({type: DELETE_CATEGORY, name});
 export const settingWatchingCategory = (name) => ({type: SET_WATCHING_CATEGORY, name});
 export const watchingCategoryMode = (mode) => ({type: WATCHING_CATEGORY_MODE, mode})
-export const setTaskMode = (name, mode, message) => ({type: SET_TASK_MODE, name, mode, message});
+export const setTaskMode = (name, message) => ({type: SET_TASK_MODE, name, message});
 export const setNewCategoryCreatingMode = (mode) => ({type: SET_NEW_CATEGORY_CREATING_MODE, mode});
 export const changeNewTaskMode = (mode) => ({type: IS_SET_NEW_TASK_MODE, mode});
 export const setToMountPopUp = (mode) => ({type: IS_POPUP_SHOWING, mode});
 export const setNewUserName = (username) => ({type: CHANGE_USERNAME, username});
-export const deleteTask = (cName, cMode, tMessage) => ({type: DELETE_TASK, cName, cMode, tMessage});
+export const deleteTask = (cName, tMessage) => ({type: DELETE_TASK, cName, tMessage});
 
 
 // export

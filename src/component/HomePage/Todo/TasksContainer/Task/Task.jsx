@@ -2,7 +2,7 @@ import "./Task.scss";
 
 const Task = (props) => {
     const changeCheckBox = () => {
-        props.setTaskMode(props.categoryName, props.categoryMode, props.data.message);
+        props.setTaskMode(props.categoryName, props.data.message);
     }
 
     return (
@@ -17,7 +17,7 @@ const Task = (props) => {
                 </div>
             </div>
             <div>
-                {props.data.isDone ? <button onClick={()=>props.deleteTask(props.categoryName, props.categoryMode, props.data.message)}>delete</button> : null}
+                {props.data.isDone ? <button onClick={()=>props.deleteTask(props.categoryName, props.data.message)}>delete</button> : null}
             </div>
         </article>
     )

@@ -38,10 +38,10 @@ export const findAndDeleteCategory = (name) => {
     return categoryes;
 }
 
-export const taskModeRefresh = (categoryes, aName, aMode, aMessage) => {
+export const taskModeRefresh = (categoryes, aName, aMessage) => {
     let newCategoryes =  categoryes.map(c => {
         if (c.name === aName) {
-            c.tasks[aMode].map(task => {
+            c.tasks.all.map(task => {
                 if (task.message === aMessage) {
                     task.isDone = !task.isDone;
                 }
@@ -71,11 +71,12 @@ export const setNewTaskToLS = (categoryes, aName, aMessage, aTime) => {
 
     return categoryes;
 }
-export const getNonDeletedTask = (categoryes, aName, aMode, aMessage) => {
+export const getNonDeletedTask = (categoryes, aName, aMessage) => {
     categoryes.map(item => {
         if (item.name === aName) {
-            let delTask = item.tasks[aMode].indexOf(item.tasks[aMode].find(task => task.message === aMessage));
-            item.tasks[aMode].splice(delTask, 1);
+            let delTask = item.tasks.all.indexOf(item.tasks.all.find(task => task.message === aMessage));
+            console.log(item.tasks.all, aMessage);
+            item.tasks.all.splice(delTask, 1);
         }
     });
     localStorage.setItem('categoryes', JSON.stringify(categoryes));

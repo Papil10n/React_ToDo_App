@@ -29,8 +29,10 @@
   font-size: 18px;
   font-family: "Segoe UI", serif;
   line-height: 1.5;
+  user-select: none;
 }
 .PopUp__backBtn {
+  user-select: none;
   position: relative;
   top: -5px;
   left: 5px;
@@ -64,6 +66,7 @@
   }
 }
 .PopUp__submitBtn {
+  user-select: none;
   text-align: right;
   margin-right: 15px;
   & button {

@@ -32,7 +32,7 @@ const NewTodos = (props) => {
                         <NavLink to="/todo" onClick={()=>props.setNewCategoryCreatingMode(false)} className="newTodo__backBtn" />
                     </div>
                     <div className="newTodo__title">
-                        Create new ToDo List
+                        Create new category
                     </div>
                 </div>
 

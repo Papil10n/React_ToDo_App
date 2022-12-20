@@ -5,9 +5,11 @@ import {deleteTask, setTaskMode} from "../../../../redux/task-reducer";
 
 
 const Tasks = (props) => {
+
     let taskItems = [];
     if (props.categoryes.length > 0) {
-        let tasks = props.categoryes.find(item => item.name === props.watchingCategory).tasks.all;
+        let initial = props.categoryes.find(item => item.name === props.watchingCategory).tasks.all;
+        let tasks = props.categoryMode === "all" ? initial : initial.filter(item=>item.time.includes(props.categoryMode.slice(1)));
 
         taskItems = tasks.map((item, index) => <Task categoryMode={props.categoryMode}
                                                      setTaskMode={props.setTaskMode} key={index}
