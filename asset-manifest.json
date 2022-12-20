@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/React_ToDo_App/static/css/main.7e72e0fd.css",
-    "main.js": "/React_ToDo_App/static/js/main.921fe049.js",
+    "main.css": "/React_ToDo_App/static/css/main.1fa119e1.css",
+    "main.js": "/React_ToDo_App/static/js/main.d242ab73.js",
     "index.html": "/React_ToDo_App/index.html",
-    "main.7e72e0fd.css.map": "/React_ToDo_App/static/css/main.7e72e0fd.css.map",
-    "main.921fe049.js.map": "/React_ToDo_App/static/js/main.921fe049.js.map"
+    "main.1fa119e1.css.map": "/React_ToDo_App/static/css/main.1fa119e1.css.map",
+    "main.d242ab73.js.map": "/React_ToDo_App/static/js/main.d242ab73.js.map"
   },
   "entrypoints": [
-    "static/css/main.7e72e0fd.css",
-    "static/js/main.921fe049.js"
+    "static/css/main.1fa119e1.css",
+    "static/js/main.d242ab73.js"
   ]
 }
