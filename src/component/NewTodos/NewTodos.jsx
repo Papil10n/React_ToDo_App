@@ -1,33 +1,27 @@
 import "./NewTodos.scss";
-import {Navigate, NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {connect} from "react-redux";
 import {createNewCategory, setNewCategoryCreatingMode} from "../../redux/task-reducer";
+import validate, {transformSuccessedName} from "../../Validators/Validate";
 
 const NewTodos = (props) => {
     let [name, setName] = useState('');
+    const navigate = useNavigate();
 
     const changeTodosName = (e) => {
         setName(e.target.value)
     }
 
     const createTodos = () => {
-        if (validateTodos(name)) {
-
-            props.createNewCategory(name.trim());
+        if (validate.categoryName(name)) {
+            props.createNewCategory(transformSuccessedName(name));
             props.setNewCategoryCreatingMode(false);
-            return <Navigate to='/todo' />
-
+            navigate('/todo');
         } else {
             alert('Please enter valid Todo Name')
             // show problem
         }
-
-    }
-
-    // transfer to another file
-    const validateTodos = () => {
-        return name.length < 14  && name.length !== 0
     }
 
     return (

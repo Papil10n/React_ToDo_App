@@ -21,26 +21,26 @@
 .app__add__btn {
   background-color: #626262;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   transition: all 0.3s ease 0s;
 
   &:before {
     content: '+';
     color: white;
-    font-size: 30px;
+    font-size: 35px;
     position: relative;
-    top: -4px;
-    left: 4px;
+    top: -11px;
+    left: 1px;
     transition: all 0.3s ease 0s;
   }
 
   &:hover {
     background-color: #2d2d2d;
     border: 1px solid white;
-
     &:before {
-      color: orange;
+      color: #00d0ff;
+
     }
   }
 }

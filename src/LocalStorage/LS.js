@@ -16,7 +16,7 @@ export const setCategory = (category) => {
             today: [],
             tomorrow: [],
             all: [
-                {message: 'test', time: '04/12/2022', isDone: false},
+
             ],
         }
     }

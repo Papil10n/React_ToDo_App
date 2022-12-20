@@ -18,7 +18,6 @@ const HomePageCont = (props) => {
     if (props.username === null) {
         props.setNewUserName(getUserName());
     }
-    console.log(props.categoryes)
     let items = [];
     if (props.categoryes !== null) {
         items = props.categoryes.map((item, index) => <Section key={index} name={item.name} count={item.tasks.all.length}

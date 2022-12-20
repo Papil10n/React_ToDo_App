@@ -2,35 +2,28 @@ import "./NewTask.scss";
 import {useState} from "react";
 import {connect} from "react-redux";
 import {changeNewTaskMode, createNewTask} from "../../../../redux/task-reducer";
+import validate from "../../../../Validators/Validate";
+
 
 const NewTask = (props) => {
     let [task, setTask] = useState();
-    let [day, setDay] = useState(1);
-    let [month, setMonth] = useState(12);
-    let [year, setYear] = useState(2022);
+    let [day, setDay] = useState("Today");
 
     const taskChanger = (e) => {
         setTask(e.target.value);
     }
-
-    const dayChanger = (e) => {
-        e.target.value > 0 && e.target.value < 31 ? setDay(e.target.value) : alert('you try to set invalid day')
-    }
-    const monthChanger = (e) => {
-        e.target.value > 0 && e.target.value < 13 ? setMonth(e.target.value) : alert('you try to set invalid month')
-    }
-    const yearChanger = (e) => {
-        e.target.value > 2022 && e.target.value < 2071 ? setYear(e.target.value) : alert('you try to set invalid year')
+    const setDayFn = (e) => {
+        setDay(e.target.value);
+        e.target.blur();
     }
 
     const dataSubmit = () => {
-
-        if (validateTask(task)) {
+        if (validate.taskName(task)) {
             // use trim()
-            // dispatch to state new block
-            // redirect to homePage
-            const time = `${day}/${month}/${year}`;
-            props.createNewTask(props.watchingCategory, task, time)
+            task.trim();
+            task = `${task[0].toUpperCase()}${task.slice(1)}`;
+
+            props.createNewTask(props.watchingCategory, task, day)
             props.changeNewTaskMode(false);
 
         } else {
@@ -39,12 +32,7 @@ const NewTask = (props) => {
         }
     }
 
-    const validateTask = (taskName) => {
-        if (!taskName) {
-            return false;
-        }
-        return taskName.length < 18 && taskName.length !== 0
-    }
+
 
     return (
         <div className="newTodo">
@@ -66,17 +54,13 @@ const NewTask = (props) => {
                         }} type="text" placeholder="write here"/>
                     </div>
                     <div className="newTask__data__ec">
-                        <p>Time</p>
+                        <p>Date</p>
                         <div className="newTask__data__cont">
-                            <input onChange={(e) => {
-                                dayChanger(e)
-                            }} type="number" min="1" max="30" placeholder="Day" value={day}/>
-                            <input onChange={(e) => {
-                                monthChanger(e)
-                            }} type="number" min="1" max="12" placeholder="Month" value={month}/>
-                            <input onChange={(e) => {
-                                yearChanger(e)
-                            }} type="number" min="2022" max="2070" placeholder="Year" value={year}/>
+                            <select defaultValue={"none"} onChange={(e)=>{setDayFn(e)}} name="data" className="newTask__data__select">
+                                <option value="Today">Today</option>
+                                <option value="Tomorrow">Tomorrow</option>
+                                <option value="Without date">Without date</option>
+                            </select>
                         </div>
                     </div>
                     <div className="newTask__data__btn">

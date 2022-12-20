@@ -13,7 +13,9 @@
 }
 
 .app__mode {
-  margin-right: 3%;
+  position: relative;
+  top: 5px;
+  margin-right: 10%;
 }
 
 .checkbox {
@@ -26,16 +28,17 @@
 .app__task__content {
 
 }
-.app__task__content__task {
-  transition: all 1s ease 0s;
-
+.app__task__content__task, .app__task__content__doneTask {
+  min-width: 160px;
+  text-decoration: line-through rgba(255, 255, 255, 0);
+  transition: all 0.5s ease 0s;
+  user-select: none;
 }
 .app__task__content__doneTask {
   text-decoration: line-through #858585;
-  transition: all 1s ease 0s;
-
 }
 .app__task__content__time {
+  user-select: none;
   font-size: 18px;
   color: gray;
 }

@@ -51,12 +51,14 @@
 .home__sections {
   height: 270px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .home__section__container {
   max-height: 290px;
   overflow-y: auto;
 }
 .home__section {
+  max-width: 94%;
   background-color: #6d6fff;
   border-radius: 10px;
   margin-block: 5px;

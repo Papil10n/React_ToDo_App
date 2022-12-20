@@ -1,17 +1,21 @@
 const validate = {
-    todoName: (name) => {
-        for (let char of name) {
-            if (char !== String(char)) return false;
-        }
-        return name.length < 14  && name.length !== 0
+    taskName: (task) => {
+        let result;
+        result = task ?
+            isNaN(+task) ?
+                task.trim().length <= 18 : false
+            : false;
+        return result;
     },
-    taskName: (name) => {
-
-    },
-    taskDate: (date) => {
-
+    categoryName: (category) => {
+        return category.length < 14  && category.length !== 0 && isNaN(+category);
     }
-
 }
+export const transformSuccessedName = (name) => {
+    name = name.trim();
+    return `${name[0].toUpperCase()}${name.slice(1)}`;
+}
+
+
 
 export default validate;

@@ -37,9 +37,17 @@
   }
 }
 .newTask__data__cont {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  input {
-    max-width: 85px;
+  margin: 0 auto;
+  .newTask__data__select {
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 5px;
+    min-width: 65%;
+    background: none;
+    border: 1px solid white;
+    color: rgba(255, 255, 255, 0.75);
+    &:focus {
+      color: black;
+    }
   }
 }
