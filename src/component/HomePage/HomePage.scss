@@ -120,22 +120,25 @@
   justify-content: right;
 }
 .home__add__task {
-  font-size: 40px;
   width: 50px;
   border-radius: 50%;
   height: 50px;
   transition: all 0.3s ease 0s;
+  background-color: #1c395d;
+  position: relative;
   &:before {
+    font-size: 40px;
     content: '+';
     color: white;
-    position: relative;
-    top: 0; left: 11px;
+    position: absolute;
+    top: -5px; left: 12px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.45);
   }
   &:hover {
-    background-color: rgba(255, 255, 255, 0.14);
+    background-color: rgba(46, 100, 168, 0.92);
   }
   &:active {
-    background-color: rgba(255, 255, 255, 0.26);
+    background-color: rgb(156, 162, 255);
   }
 }
 .two {background-color: #4c4dff !important;}

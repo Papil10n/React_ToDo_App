@@ -1,7 +1,7 @@
 import './App.scss';
 import React from "react";
-import NewTodosContainer from "./component/NewTodos/NewTodos";
 import HomePageContainer from "./component/HomePage/HomePageContainer";
+import NewTodosContainer from "./component/NewTodos/NewTodosContainer";
 
 
 const App = (props) => {

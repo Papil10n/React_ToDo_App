@@ -1,16 +1,20 @@
 const validate = {
-    taskName: (task) => {
-        return task.length < 50  && task.length !== 0 && isNaN(+task);
+    name: (name, length) => {
+        return name.length < length  && name.length !== 0 && isNaN(+name);
     },
-    categoryName: (category) => {
-        return category.length < 18  && category.length !== 0 && isNaN(+category);
-    }
-}
-export const transformSuccessedName = (name) => {
-    name = name.trim();
-    return `${name[0].toUpperCase()}${name.slice(1)}`;
 }
 
+export const transform = {
+    successedName: (name) => {
+        name = name.trim();
+        return `${name[0].toUpperCase()}${name.slice(1)}`;
+    },
+    error: (name, length) => {
+        if (!name) {return 'The field cannot be empty'}
+        if (!isNaN(+name)) {return 'The field cannot contain only numbers'}
+        if (name.length > length) {return `Name must not exceed ${length} characters`}
+    }
+}
 
 
 export default validate;

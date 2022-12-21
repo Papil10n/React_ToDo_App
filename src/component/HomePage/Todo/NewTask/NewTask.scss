@@ -36,6 +36,12 @@
     }
   }
 }
+.newTask_error {
+  font-size: 16px;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: underline 1px solid crimson;
+}
 .newTask__data__cont {
   margin: 0 auto;
   .newTask__data__select {

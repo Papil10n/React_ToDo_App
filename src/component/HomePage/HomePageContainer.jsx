@@ -9,8 +9,8 @@ import {
     setNewCategoryCreatingMode, setNewUserName, settingWatchingCategory, setToMountPopUp, watchingCategoryMode
 } from "../../redux/task-reducer";
 import HomePage from "./HomePage";
-import TodoContainer from "./Todo/Todo";
 import {getUserName} from "../../LocalStorage/LS";
+import TodoContainer from "./Todo/TodoContainer";
 
 
 const HomePageCont = (props) => {
@@ -18,12 +18,14 @@ const HomePageCont = (props) => {
     if (props.username === null) {
         props.setNewUserName(getUserName());
     }
+
     let items = [];
     if (props.categoryes !== null) {
-        items = props.categoryes.map((item, index) => <Section key={index} name={item.name} count={item.tasks.all.length}
-                                                       deleteCategory={props.deleteCategory}
-                                                       watchingCategoryMode={props.watchingCategoryMode}
-                                                       settingWatchingCategory={props.settingWatchingCategory}/>)
+        items = props.categoryes.map((item, index) => <Section key={index} name={item.name}
+                                                               count={item.tasks.all.length}
+                                                               deleteCategory={props.deleteCategory}
+                                                               watchingCategoryMode={props.watchingCategoryMode}
+                                                               settingWatchingCategory={props.settingWatchingCategory}/>)
     }
     return (
         <>

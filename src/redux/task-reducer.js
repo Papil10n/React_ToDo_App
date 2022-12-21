@@ -20,7 +20,7 @@ const IS_SET_NEW_TASK_MODE = "toDo/tasks/IS_SET_NEW_TASK_MODE";
 const IS_POPUP_SHOWING = "toDo/tasks/IS_POPUP_SHOWING";
 const CHANGE_USERNAME = "toDo/tasks/CHANGE_USERNAME";
 const DELETE_TASK = "toDo/tasks/DELETE_TASK";
-
+const IS_ERROR_SHOWING = "toDo/tasks/IS_ERROR_SHOWING";
 
 
 // initial state
@@ -32,6 +32,8 @@ const initialState = {
     isNewCategoryCreating: false,
     isNewTaskCreating: false,
     isPopUpShowing: false,
+    isError: false,
+    errorText: null,
 }
 
 
@@ -73,13 +75,15 @@ const tasksReducer = (state = initialState, action) => {
             return {...state, categoryes: showCategoryes()}
         case DELETE_CATEGORY:
             return {...state, categoryes: findAndDeleteCategory(action.name)}
+        case IS_ERROR_SHOWING:
+            return {...state, isError: action.mode, errorText: action.text}
         default:
             return state;
     }
 }
 
 // actionsCreator
-export const createNewTask = (name, message, time) => ({type: CREATE_NEW_TASK,name,message,time});
+export const createNewTask = (name, message, time) => ({type: CREATE_NEW_TASK, name, message, time});
 export const setCurrentDateWatching = (date) => ({type: SET_CURRENT_DATE_WATCHING, date});
 export const createNewCategory = (name) => ({type: CREATE_NEW_CATEGORY, name});
 export const setAvailableCategory = () => ({type: SET_AVAILABLE_CATEGORY});
@@ -92,6 +96,7 @@ export const changeNewTaskMode = (mode) => ({type: IS_SET_NEW_TASK_MODE, mode});
 export const setToMountPopUp = (mode) => ({type: IS_POPUP_SHOWING, mode});
 export const setNewUserName = (username) => ({type: CHANGE_USERNAME, username});
 export const deleteTask = (cName, tMessage) => ({type: DELETE_TASK, cName, tMessage});
+export const setIsError = (mode, text) => ({type: IS_ERROR_SHOWING, mode, text});
 
 
 // export

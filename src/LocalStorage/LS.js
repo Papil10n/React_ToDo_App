@@ -38,6 +38,8 @@ export const findAndDeleteCategory = (name) => {
     return categoryes;
 }
 
+
+// tasks
 export const taskModeRefresh = (categoryes, aName, aMessage) => {
     let newCategoryes =  categoryes.map(c => {
         if (c.name === aName) {
@@ -75,7 +77,6 @@ export const getNonDeletedTask = (categoryes, aName, aMessage) => {
     categoryes.map(item => {
         if (item.name === aName) {
             let delTask = item.tasks.all.indexOf(item.tasks.all.find(task => task.message === aMessage));
-            console.log(item.tasks.all, aMessage);
             item.tasks.all.splice(delTask, 1);
         }
     });

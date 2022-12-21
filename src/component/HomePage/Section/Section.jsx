@@ -1,12 +1,11 @@
 import {NavLink} from "react-router-dom";
 
 const Section = (props) => {
+
     const setWatchingCategory = () => {
         props.settingWatchingCategory(props.name);
         props.watchingCategoryMode("all");
-
     }
-
     const clearCategory = (name) => {
         props.deleteCategory(name);
     }
