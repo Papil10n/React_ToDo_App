@@ -4,23 +4,24 @@ import {changeNewTaskMode, createNewTask, setIsError} from "../../../../redux/ta
 import NewTask from "./NewTask";
 
 
-const newTaskContainer = (props) => {
+const newTaskContainer = ({createNewTask, changeNewTaskMode, watchingCategory, setIsError, isError, errorText}) => {
 
     const dataSubmit = (name, day) => {
         if (validate.name(name, 50)) {
-            props.createNewTask(props.watchingCategory, transform.successedName(name), day)
-            props.changeNewTaskMode(false);
+            createNewTask(watchingCategory, transform.successedName(name), day)
+            changeNewTaskMode(false);
 
         } else {
-            props.setIsError(true, transform.error(name, 50));
+            setIsError(true, transform.error(name, 50));
 
             setTimeout(() => {
-                props.setIsError(false, null);
+                setIsError(false, null);
             }, 5000);
         }
     }
 
-    return <NewTask dataSubmit={dataSubmit} isError={props.isError} errorText={props.errorText} changeNewTaskMode={props.changeNewTaskMode}/>
+    return <NewTask dataSubmit={dataSubmit} isError={isError} errorText={errorText}
+                    changeNewTaskMode={changeNewTaskMode}/>
 }
 
 

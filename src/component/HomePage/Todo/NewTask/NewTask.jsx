@@ -2,7 +2,7 @@ import "./NewTask.scss";
 import {useState} from "react";
 
 
-const NewTask = (props) => {
+const NewTask = ({changeNewTaskMode, dataSubmit, isError, errorText}) => {
     let [task, setTask] = useState('');
     let [day, setDay] = useState("Today");
 
@@ -20,7 +20,7 @@ const NewTask = (props) => {
                 <div className="newTodo__topInfo">
                     <div className="newTodo__back">
                         <button onClick={() => {
-                            props.changeNewTaskMode(false)
+                            changeNewTaskMode(false)
                         }} className="newTodo__backBtn"/>
                     </div>
                     <div className="newTodo__title">
@@ -48,10 +48,13 @@ const NewTask = (props) => {
                         </div>
                     </div>
                     <div className="newTask__data__btn">
-                        <button onClick={()=>{props.dataSubmit(task, day)}}>Create</button>
+                        <button onClick={() => {
+                            dataSubmit(task, day)
+                        }}>Create
+                        </button>
                     </div>
-                    {props.isError ? <div className="newTask_error">
-                        {props.errorText}
+                    {isError ? <div className="newTask_error">
+                        {errorText}
                     </div> : null}
                 </div>
             </div>

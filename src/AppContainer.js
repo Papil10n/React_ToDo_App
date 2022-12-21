@@ -1,18 +1,17 @@
 import './App.scss';
-import React from "react";
+import React, {useEffect} from "react";
 import {setAvailableCategory} from "./redux/task-reducer";
 import {connect} from "react-redux";
 import App from "./App";
 
-class AppCont extends React.Component {
-    componentDidMount() {
-        this.props.setAvailableCategory();
-    }
+const AppContainer = ({setAvailableCategory, isNewCategoryCreating, watchingCategory}) => {
 
-    render() {
-        return <App isNewCategoryCreating={this.props.isNewCategoryCreating}
-                    watchingCategory={this.props.watchingCategory}/>
-    }
+    useEffect(() => {
+        setAvailableCategory();
+    })
+
+    return <App isNewCategoryCreating={isNewCategoryCreating}
+                watchingCategory={watchingCategory}/>
 }
 
 const mstp = (state) => {
@@ -23,6 +22,6 @@ const mstp = (state) => {
     }
 }
 
-const AppContainer = connect(mstp, {setAvailableCategory})(AppCont);
 
-export default AppContainer;
+
+export default connect(mstp, {setAvailableCategory})(AppContainer);

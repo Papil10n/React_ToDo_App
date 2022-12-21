@@ -7,6 +7,21 @@
   ul {
     display: flex;
     justify-content: space-around;
+
+  }
+}
+.app__nav__link {
+  font-size: 20px;
+  padding: 1px 20px;
+  background: none;
+  border-radius: 15px;
+  transition: all 0.2s ease 0s;
+  &:hover {
+    background: rgba(131, 131, 255, 0.2);
+  }
+  &:active {
+    color: darkblue;
+    scale: 0.96;
   }
 }
 

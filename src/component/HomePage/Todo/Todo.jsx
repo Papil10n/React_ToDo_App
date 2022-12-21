@@ -4,15 +4,15 @@ import Navigates from "./Navigates/Navigate";
 import TasksContainer from "./TasksContainer/TasksContainer";
 
 
-const Todo = (props) => {
+const Todo = ({settingWatchingCategory, watchingCategory, watchingCategoryMode, changeNewTaskMode}) => {
     return (
         <div>
-            <Header settingWatchingCategory={props.settingWatchingCategory}/>
-            <Navigates watchingCategory={props.watchingCategory} watchingCategoryMode={props.watchingCategoryMode}/>
+            <Header settingWatchingCategory={settingWatchingCategory}/>
+            <Navigates watchingCategory={watchingCategory} watchingCategoryMode={watchingCategoryMode}/>
             <div className="app__main">
                 <TasksContainer/>
             </div>
-            <Footer changeNewTaskMode={props.changeNewTaskMode}/>
+            <Footer changeNewTaskMode={changeNewTaskMode}/>
         </div>
     )
 }

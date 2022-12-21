@@ -4,17 +4,17 @@ import Task from "./Task/Task";
 import {deleteTask, setTaskMode} from "../../../../redux/task-reducer";
 
 
-const TasksContainer = (props) => {
+const TasksContainer = ({categoryes, categoryMode, watchingCategory, setTaskMode, deleteTask}) => {
 
     let taskItems = [];
-    if (props.categoryes.length > 0) {
-        let initial = props.categoryes.find(item => item.name === props.watchingCategory).tasks.all;
-        let tasks = props.categoryMode === "all" ? initial : initial.filter(item => item.time.includes(props.categoryMode.slice(1)));
+    if (categoryes.length > 0) {
+        let initial = categoryes.find(item => item.name === watchingCategory).tasks.all;
+        let tasks = categoryMode === "all" ? initial : initial.filter(item => item.time.includes(categoryMode.slice(1)));
 
-        taskItems = tasks.map((item, index) => <Task categoryMode={props.categoryMode}
-                                                     setTaskMode={props.setTaskMode} key={index}
-                                                     categoryName={props.watchingCategory} data={item}
-                                                     deleteTask={props.deleteTask}
+        taskItems = tasks.map((item, index) => <Task categoryMode={categoryMode}
+                                                     setTaskMode={setTaskMode} key={index}
+                                                     categoryName={watchingCategory} data={item}
+                                                     deleteTask={deleteTask}
         />);
     }
 

@@ -13,28 +13,39 @@ import {getUserName} from "../../LocalStorage/LS";
 import TodoContainer from "./Todo/TodoContainer";
 
 
-const HomePageCont = (props) => {
+const HomePageCont = ({
+                          username,
+                          setNewUserName,
+                          categoryes,
+                          deleteCategory,
+                          watchingCategoryMode,
+                          settingWatchingCategory,
+                          watchingCategory,
+                          setNewCategoryCreatingMode,
+                          isPopUpShowing,
+                          setToMountPopUp
+                      }) => {
 
-    if (props.username === null) {
-        props.setNewUserName(getUserName());
+    if (username === null) {
+        setNewUserName(getUserName());
     }
 
     let items = [];
-    if (props.categoryes !== null) {
-        items = props.categoryes.map((item, index) => <Section key={index} name={item.name}
-                                                               count={item.tasks.all.length}
-                                                               deleteCategory={props.deleteCategory}
-                                                               watchingCategoryMode={props.watchingCategoryMode}
-                                                               settingWatchingCategory={props.settingWatchingCategory}/>)
+    if (categoryes !== null) {
+        items = categoryes.map((item, index) => <Section key={index} name={item.name}
+                                                         count={item.tasks.all.length}
+                                                         deleteCategory={deleteCategory}
+                                                         watchingCategoryMode={watchingCategoryMode}
+                                                         settingWatchingCategory={settingWatchingCategory}/>)
     }
     return (
         <>
-            {props.watchingCategory ? <TodoContainer/> : <HomePage items={items} categoryes={props.categoryes}
-                                                                   setNewCategoryCreatingMode={props.setNewCategoryCreatingMode}
-                                                                   setToMountPopUp={props.setToMountPopUp}
-                                                                   isPopUpShowing={props.isPopUpShowing}
-                                                                   setNewUserName={props.setNewUserName}
-                                                                   username={props.username}
+            {watchingCategory ? <TodoContainer/> : <HomePage items={items} categoryes={categoryes}
+                                                             setNewCategoryCreatingMode={setNewCategoryCreatingMode}
+                                                             setToMountPopUp={setToMountPopUp}
+                                                             isPopUpShowing={isPopUpShowing}
+                                                             setNewUserName={setNewUserName}
+                                                             username={username}
             />}
         </>
     )
@@ -51,7 +62,7 @@ const mstp = (state) => {
     }
 }
 
-const HomePageContainer = connect(mstp, {
+export default connect(mstp, {
     settingWatchingCategory,
     setCurrentDateWatching,
     setAvailableCategory,
@@ -61,6 +72,3 @@ const HomePageContainer = connect(mstp, {
     setToMountPopUp,
     setNewUserName,
 })(HomePageCont);
-
-
-export default HomePageContainer;

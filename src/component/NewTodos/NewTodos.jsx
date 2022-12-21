@@ -2,7 +2,7 @@ import "./NewTodos.scss";
 import {NavLink,} from "react-router-dom";
 import {useState} from "react";
 
-const NewTodos = (props) => {
+const NewTodos = ({setNCCreatingMode, createCategory, isError, errorText}) => {
     let [name, setName] = useState('');
 
     return (
@@ -10,7 +10,7 @@ const NewTodos = (props) => {
             <div className="newTodo__container">
                 <div className="newTodo__topInfo">
                     <div className="newTodo__back">
-                        <NavLink to="/todo" onClick={() => props.setNCCreatingMode(false)}
+                        <NavLink to="/todo" onClick={() => setNCCreatingMode(false)}
                                  className="newTodo__backBtn"/>
                     </div>
                     <div className="newTodo__title">
@@ -22,12 +22,12 @@ const NewTodos = (props) => {
                         setName(e.target.value)
                     }} type="text" placeholder="Set Name" value={name}/>
                     <button className="newTodo__data__link" onClick={() => {
-                        props.createCategory(name)
+                        createCategory(name)
                     }}>Create
                     </button>
                 </div>
-                {props.isError ? <div className="newTodo__error">
-                    {props.errorText}
+                {isError ? <div className="newTodo__error">
+                    {errorText}
                 </div> : null}
             </div>
         </div>

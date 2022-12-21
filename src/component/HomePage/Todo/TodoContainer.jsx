@@ -9,10 +9,10 @@ import Todo from "./Todo";
 import NewTaskContainer from "./NewTask/newTaskContainer";
 
 
-const TodoContainer = (props) => {
-    return props.isNewTaskCreating ? <NewTaskContainer/> :
-        <Todo settingWatchingCategory={props.settingWatchingCategory} watchingCategory={props.watchingCategory}
-              watchingCategoryMode={props.watchingCategoryMode} changeNewTaskMode={props.changeNewTaskMode}/>
+const TodoContainer = ({isNewTaskCreating, settingWatchingCategory, watchingCategoryMode, watchingCategory, changeNewTaskMode}) => {
+    return isNewTaskCreating ? <NewTaskContainer/> :
+        <Todo settingWatchingCategory={settingWatchingCategory} watchingCategory={watchingCategory}
+              watchingCategoryMode={watchingCategoryMode} changeNewTaskMode={changeNewTaskMode}/>
 }
 
 const mstp = (state) => {

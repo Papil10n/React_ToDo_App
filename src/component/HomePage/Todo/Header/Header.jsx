@@ -1,11 +1,10 @@
 import "./Header.scss";
-import {NavLink} from "react-router-dom";
 
-const Header = (props) => {
+const Header = ({settingWatchingCategory}) => {
     return (<>
         <div className="app__head">
-            <NavLink to='/todo' onClick={() => {
-                props.settingWatchingCategory(null)
+            <button onClick={() => {
+                settingWatchingCategory(null)
             }} className='app__backBtn'/>
             <h1 className="title">All Tasks</h1>
         </div>

@@ -3,29 +3,29 @@ import "./HomePage.scss";
 import PopUpMenu from "./PopUpMenu/PopUpMenu";
 
 
-const HomePage = (props) => {
+const HomePage = ({isPopUpShowing, setToMountPopUp, setNewUserName, username, setNewCategoryCreatingMode, items}) => {
 
     return (
         <div className='home'>
-            {props.isPopUpShowing ?
-                <PopUpMenu setToMountPopUp={props.setToMountPopUp} setNewUserName={props.setNewUserName}/> : null}
+            {isPopUpShowing ?
+                <PopUpMenu setToMountPopUp={setToMountPopUp} setNewUserName={setNewUserName}/> : null}
             <div className='home__container'>
                 <div className='home__top__content'>
                     <div className='home__burger'>
                         <button onClick={() => {
-                            props.setToMountPopUp(true);
+                            setToMountPopUp(true);
                         }}/>
                     </div>
                     <div className='home__text'>
                         <p className='home__top__hello'>Hello</p>
-                        <p className='home__top__nick'>{props.username}</p>
+                        <p className='home__top__nick'>{username}</p>
                     </div>
                 </div>
                 <div className="home__sections">
-                    {props.items}
+                    {items}
                 </div>
                 <div className='home__add__task__wrap'>
-                    <button onClick={() => props.setNewCategoryCreatingMode(true)}
+                    <button onClick={() => setNewCategoryCreatingMode(true)}
                              className='home__add__task'/>
                 </div>
             </div>

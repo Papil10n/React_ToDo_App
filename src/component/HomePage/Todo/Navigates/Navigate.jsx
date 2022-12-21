@@ -1,31 +1,23 @@
 import "./Navigates.scss";
-import {NavLink} from "react-router-dom";
 
 
-const Navigates = (props) => {
+const Navigates = ({watchingCategoryMode}) => {
 
     const setCategoryMode = (mode) => {
-        props.watchingCategoryMode(mode);
+        watchingCategoryMode(mode);
     }
 
     return (<>
         <nav className="app__nav">
             <ul>
                 <li>
-                    <NavLink onClick={() => setCategoryMode('all')} to={`${props.watchingCategory}/all`}>
-                        All
-                    </NavLink>
+                    <button className="app__nav__link" onClick={() => setCategoryMode('all')}>All</button>
                 </li>
                 <li>
-                    <NavLink onClick={() => setCategoryMode('today')}
-                             to={`${props.watchingCategory}/today`}>Today
-                    </NavLink>
+                    <button className="app__nav__link" onClick={() => setCategoryMode('today')}>Today</button>
                 </li>
                 <li>
-                    <NavLink onClick={() => setCategoryMode('tomorrow')}
-                             to={`${props.watchingCategory}/tomorrow`}>
-                        Tomorrow
-                    </NavLink>
+                    <button className="app__nav__link" onClick={() => setCategoryMode('tomorrow')}>Tomorrow</button>
                 </li>
             </ul>
         </nav>

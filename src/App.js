@@ -4,12 +4,12 @@ import HomePageContainer from "./component/HomePage/HomePageContainer";
 import NewTodosContainer from "./component/NewTodos/NewTodosContainer";
 
 
-const App = (props) => {
+const App = ({isNewCategoryCreating}) => {
     return (
         <div className="app">
             <div className="app__container">
                 <div className='app__wrap'>
-                    {props.isNewCategoryCreating ? <NewTodosContainer/> : <HomePageContainer/>}
+                    {isNewCategoryCreating ? <NewTodosContainer/> : <HomePageContainer/>}
                 </div>
             </div>
         </div>

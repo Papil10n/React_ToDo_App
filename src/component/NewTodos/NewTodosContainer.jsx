@@ -5,26 +5,26 @@ import {createNewCategory, setIsError, setNewCategoryCreatingMode} from "../../r
 import NewTodos from "./NewTodos";
 
 
-const NewTodosContainer = (props) => {
+const NewTodosContainer = ({createNewCategory, setNewCategoryCreatingMode, setIsError, isError, errorText}) => {
     const navigate = useNavigate();
 
     const createCategory = (name) => {
         if (validate.name(name, 18)) {
-            props.createNewCategory(transform.successedName(name));
-            props.setNewCategoryCreatingMode(false);
+            createNewCategory(transform.successedName(name));
+            setNewCategoryCreatingMode(false);
             navigate('/todo');
         } else {
 
-            props.setIsError(true, transform.error(name, 18));
+            setIsError(true, transform.error(name, 18));
 
             setTimeout(() => {
-                props.setIsError(false, null);
+                setIsError(false, null);
             }, 5000);
         }
     }
 
-    return <NewTodos createCategory={createCategory} isError={props.isError} errorText={props.errorText}
-                     setNCCreatingMode={props.setNewCategoryCreatingMode}/>
+    return <NewTodos createCategory={createCategory} isError={isError} errorText={errorText}
+                     setNCCreatingMode={setNewCategoryCreatingMode}/>
 }
 
 
