@@ -10,16 +10,12 @@ const NewTodosContainer = ({createNewCategory, setNewCategoryCreatingMode, setIs
 
     const createCategory = (name) => {
         if (validate.name(name, 18)) {
+            setIsError(false, null);
             createNewCategory(transform.successedName(name));
             setNewCategoryCreatingMode(false);
             navigate('/todo');
         } else {
-
             setIsError(true, transform.error(name, 18));
-
-            setTimeout(() => {
-                setIsError(false, null);
-            }, 5000);
         }
     }
 

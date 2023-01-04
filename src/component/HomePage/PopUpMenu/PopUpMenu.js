@@ -1,16 +1,6 @@
 import "./PopUpMenu.scss";
-import {useState} from "react";
 
-const PopUpMenu = ({setNewUserName, setToMountPopUp}) => {
-    let [name, setName] = useState("");
-
-    const settingNickName = (text) => {
-        setName(text.target.value.trim());
-    }
-    const setNameToBLL = () => {
-        setNewUserName(name);
-        setToMountPopUp(false);
-    }
+const PopUpMenu = ({settingLocalName, setNameToBLL, setToMountPopUp}) => {
 
     return (
         <div className="PopUp">
@@ -23,11 +13,11 @@ const PopUpMenu = ({setNewUserName, setToMountPopUp}) => {
                 </div>
                 <div className="PopUp__input">
                     <input type="text" onInput={(e) => {
-                        settingNickName(e)
+                        settingLocalName(e)
                     }} placeholder="nickname"/>
                 </div>
                 <div className="PopUp__submitBtn">
-                    <button onClick={() => setNameToBLL()}>Complete</button>
+                    <button onClick={()=>{setNameToBLL()}}>Complete</button>
                 </div>
             </div>
         </div>

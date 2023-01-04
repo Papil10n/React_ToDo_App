@@ -1,14 +1,14 @@
 import React from "react";
 import "./HomePage.scss";
-import PopUpMenu from "./PopUpMenu/PopUpMenu";
+import PopUpMenuContainer from "./PopUpMenu/PopUpMenuContainer";
 
 
-const HomePage = ({isPopUpShowing, setToMountPopUp, setNewUserName, username, setNewCategoryCreatingMode, items}) => {
+const HomePage = ({isPopUpShowing, setToMountPopUp, username, setNewCategoryCreatingMode, items}) => {
 
     return (
         <div className='home'>
             {isPopUpShowing ?
-                <PopUpMenu setToMountPopUp={setToMountPopUp} setNewUserName={setNewUserName}/> : null}
+                <PopUpMenuContainer/> : null}
             <div className='home__container'>
                 <div className='home__top__content'>
                     <div className='home__burger'>
